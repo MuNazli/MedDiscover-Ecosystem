@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Treatment",
+  "type": "object",
+  "required": ["id", "name", "clinicId"],
+  "properties": {
+    "id": { "type": "integer", "minimum": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "clinicId": { "type": "integer", "minimum": 1 },
+    "durationWeeks": { "type": "integer", "minimum": 1 },
+    "outcomes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

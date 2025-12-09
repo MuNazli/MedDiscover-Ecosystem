@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "City Health Clinic",
+    "location": "New York, NY",
+    "specialties": ["Cardiology", "Dermatology"],
+    "contact": "212-555-1234"
+  },
+  {
+    "id": 2,
+    "name": "Harbor Wellness Center",
+    "location": "Seattle, WA",
+    "specialties": ["Endocrinology", "Primary Care"],
+    "contact": "206-555-0456"
+  },
+  {
+    "id": 3,
+    "name": "Desert Springs Clinic",
+    "location": "Phoenix, AZ",
+    "specialties": ["Oncology", "Radiology"],
+    "contact": "480-555-7788"
+  }
+]

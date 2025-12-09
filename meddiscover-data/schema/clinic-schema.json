@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Clinic",
+  "type": "object",
+  "required": ["id", "name", "location", "specialties"],
+  "properties": {
+    "id": { "type": "integer", "minimum": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "location": { "type": "string" },
+    "specialties": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "contact": { "type": "string" }
+  }
+}

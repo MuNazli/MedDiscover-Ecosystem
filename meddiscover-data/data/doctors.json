@@ -1,0 +1,23 @@
+[
+  {
+    "id": 101,
+    "name": "Dr. Maya Chen",
+    "specialty": "Cardiology",
+    "clinicId": 1,
+    "experienceYears": 12
+  },
+  {
+    "id": 102,
+    "name": "Dr. Liam Patel",
+    "specialty": "Endocrinology",
+    "clinicId": 2,
+    "experienceYears": 9
+  },
+  {
+    "id": 103,
+    "name": "Dr. Elena Ruiz",
+    "specialty": "Oncology",
+    "clinicId": 3,
+    "experienceYears": 15
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1001,
+    "name": "Cardiac Rehab Program",
+    "clinicId": 1,
+    "durationWeeks": 12,
+    "outcomes": ["Improved stamina", "Lower blood pressure"]
+  },
+  {
+    "id": 1002,
+    "name": "Metabolic Wellness Plan",
+    "clinicId": 2,
+    "durationWeeks": 8,
+    "outcomes": ["Weight management", "Balanced glucose levels"]
+  },
+  {
+    "id": 1003,
+    "name": "Targeted Oncology Therapy",
+    "clinicId": 3,
+    "durationWeeks": 16,
+    "outcomes": ["Tumor size reduction", "Improved immunity"]
+  }
+]
