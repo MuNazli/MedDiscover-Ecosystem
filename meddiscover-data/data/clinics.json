@@ -1,0 +1,16 @@
+[
+  {
+    "id": "clinic-istanbul",
+    "name": "MedDiscover Istanbul",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "specialties": ["cardiology", "orthopedics", "fertility"]
+  },
+  {
+    "id": "clinic-antalya",
+    "name": "Aegean Care Antalya",
+    "city": "Antalya",
+    "country": "Turkey",
+    "specialties": ["dermatology", "dental", "wellness"]
+  }
+]

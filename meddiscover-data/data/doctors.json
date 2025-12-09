@@ -1,0 +1,16 @@
+[
+  {
+    "id": "dr-akyol",
+    "name": "Dr. Selin Akyol",
+    "specialty": "Cardiology",
+    "clinicId": "clinic-istanbul",
+    "languages": ["tr", "en"]
+  },
+  {
+    "id": "dr-demir",
+    "name": "Dr. Cem Demir",
+    "specialty": "Dermatology",
+    "clinicId": "clinic-antalya",
+    "languages": ["tr", "de", "en"]
+  }
+]

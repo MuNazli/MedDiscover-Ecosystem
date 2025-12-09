@@ -1,0 +1,14 @@
+[
+  {
+    "id": "treatment-heart",
+    "name": "Minimally Invasive Cardiac Surgery",
+    "category": "cardiology",
+    "durationDays": 7
+  },
+  {
+    "id": "treatment-skin",
+    "name": "Comprehensive Dermatology Program",
+    "category": "dermatology",
+    "durationDays": 5
+  }
+]
