@@ -1,0 +1,1 @@
+Yönetim panelinde kullanılacak modüler bileşenler bu klasörde toplanacaktır.

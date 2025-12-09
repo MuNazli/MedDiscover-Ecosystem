@@ -1,0 +1,1 @@
+Bu klasör, ileride oluşturulacak yeniden kullanılabilir web bileşenlerine ayrılmıştır.
