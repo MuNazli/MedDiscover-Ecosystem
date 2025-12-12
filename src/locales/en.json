@@ -1,0 +1,92 @@
+{
+  "common": {
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "next": "Next",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "required": "Required"
+  },
+  "lead": {
+    "pageTitle": "Request Free Consultation",
+    "pageSubtitle": "Fill out the form and we will contact you within 24 hours.",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "phone": "Phone",
+    "treatment": "Desired Treatment",
+    "selectTreatment": "Select treatment",
+    "message": "Your Message (optional)",
+    "messagePlaceholder": "Briefly describe your request...",
+    "preferredLanguage": "Preferred Language",
+    "consentPrivacy": "I have read and agree to the Privacy Policy",
+    "consentAGB": "I accept the Terms and Conditions",
+    "consentMarketing": "I want to receive newsletters and offers (optional)",
+    "captcha": "Security Code",
+    "captchaPlaceholder": "Enter code",
+    "refreshCaptcha": "New Code",
+    "submit": "Submit Request",
+    "submitting": "Submitting..."
+  },
+  "success": {
+    "title": "Thank you for your inquiry!",
+    "subtitle": "We have received your request and will contact you within 24-48 hours.",
+    "whatNext": "What happens next?",
+    "step1": "Our medical team will review your inquiry",
+    "step2": "A consultant will contact you by phone or email",
+    "step3": "You will receive a personalized offer",
+    "emailSent": "A confirmation email has been sent to your email address.",
+    "newRequest": "Submit new request"
+  },
+  "treatments": {
+    "dental": "Dental Treatment",
+    "hair_transplant": "Hair Transplant",
+    "plastic_surgery": "Plastic Surgery",
+    "eye_surgery": "Eye Surgery",
+    "bariatric": "Bariatric Surgery",
+    "orthopedic": "Orthopedic",
+    "cardiology": "Cardiology",
+    "oncology": "Oncology",
+    "fertility": "Fertility Treatment",
+    "other": "Other"
+  },
+  "admin": {
+    "login": "Login",
+    "logout": "Logout",
+    "email": "Email",
+    "password": "Password",
+    "leads": "Leads",
+    "search": "Search",
+    "searchPlaceholder": "Search name, email or phone...",
+    "noLeads": "No leads found",
+    "name": "Name",
+    "contact": "Contact",
+    "status": "Status",
+    "date": "Date",
+    "showing": "Showing",
+    "of": "of",
+    "previous": "Previous",
+    "nextPage": "Next"
+  },
+  "status": {
+    "NEW": "New",
+    "CONTACTED": "Contacted",
+    "QUALIFIED": "Qualified",
+    "CONVERTED": "Converted",
+    "ARCHIVED": "Archived"
+  },
+  "errors": {
+    "required": "This field is required",
+    "invalidEmail": "Invalid email address",
+    "invalidPhone": "Invalid phone number",
+    "captchaRequired": "Please enter the security code",
+    "captchaInvalid": "Invalid security code",
+    "serverError": "An error occurred. Please try again.",
+    "rateLimited": "Too many requests. Please wait a moment."
+  }
+}

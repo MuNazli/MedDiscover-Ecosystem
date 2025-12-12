@@ -1,0 +1,142 @@
+// MedDiscover M01 - Lead Service Database Schema
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Lead (Patient Registration)
+model Lead {
+  id                  String      @id @default(uuid())
+  
+  // Personal Information
+  firstName           String      @map("first_name")
+  lastName            String      @map("last_name")
+  email               String
+  phone               String
+  
+  // Medical Information
+  treatmentType       String      @map("treatment_type")
+  message             String?     @db.Text
+  preferredLanguage   String      @default("de") @map("preferred_language")
+  
+  // GDPR Consents (zorunlu alanlar)
+  consentPrivacy      Boolean     @map("consent_privacy")
+  acceptAGB           Boolean     @map("accept_agb")
+  consentMarketing    Boolean     @default(false) @map("consent_marketing")
+  consentVersion      String      @map("consent_version") // e.g., "1.0.0"
+  consentTimestamp    DateTime    @map("consent_timestamp")
+  legalLocale         String      @map("legal_locale") // "de", "tr", "en"
+  
+  // Metadata
+  ipAddress           String?     @map("ip_address")
+  userAgent           String?     @map("user_agent") @db.Text
+  source              String      @default("website")
+  status              LeadStatus  @default(NEW)
+  
+  // Timestamps
+  createdAt           DateTime    @default(now()) @map("created_at")
+  updatedAt           DateTime    @updatedAt @map("updated_at")
+  
+  // GDPR - Retention/Deletion
+  expiresAt           DateTime    @map("expires_at") // Auto-calculated based on retention policy
+  deletedAt           DateTime?   @map("deleted_at")
+  deletionReason      String?     @map("deletion_reason")
+  
+  // Relations
+  auditLogs           AuditLog[]
+  consentRecords      ConsentRecord[]
+  
+  @@index([email])
+  @@index([status])
+  @@index([createdAt])
+  @@index([expiresAt])
+  @@map("leads")
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  CONVERTED
+  ARCHIVED
+}
+
+// Admin Users
+model Admin {
+  id            String      @id @default(uuid())
+  email         String      @unique
+  passwordHash  String      @map("password_hash")
+  name          String
+  role          AdminRole   @default(STAFF)
+  isActive      Boolean     @default(true) @map("is_active")
+  lastLoginAt   DateTime?   @map("last_login_at")
+  createdAt     DateTime    @default(now()) @map("created_at")
+  updatedAt     DateTime    @updatedAt @map("updated_at")
+  
+  // Relations
+  auditLogs     AuditLog[]
+  
+  @@map("admins")
+}
+
+enum AdminRole {
+  SUPER_ADMIN
+  ADMIN
+  STAFF
+}
+
+// Audit Log for GDPR compliance
+model AuditLog {
+  id          String      @id @default(uuid())
+  event       AuditEvent  // Standardized event names
+  entityType  String      @map("entity_type")
+  entityId    String?     @map("entity_id")
+  details     Json?       // Additional context
+  ipAddress   String?     @map("ip_address")
+  userAgent   String?     @map("user_agent") @db.Text
+  adminId     String?     @map("admin_id")
+  leadId      String?     @map("lead_id")
+  createdAt   DateTime    @default(now()) @map("created_at")
+  
+  // Relations
+  admin       Admin?      @relation(fields: [adminId], references: [id])
+  lead        Lead?       @relation(fields: [leadId], references: [id], onDelete: SetNull)
+  
+  @@index([event])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
+
+enum AuditEvent {
+  LEAD_CREATED
+  LEAD_UPDATED
+  LEAD_DELETED
+  LEADS_VIEWED
+  ADMIN_LOGIN_SUCCESS
+  ADMIN_LOGIN_FAIL
+  ADMIN_LOGOUT
+  DATA_CLEANUP
+}
+
+// Consent Records (detailed GDPR tracking)
+model ConsentRecord {
+  id              String    @id @default(uuid())
+  leadId          String    @map("lead_id")
+  consentType     String    @map("consent_type") // "privacy", "agb", "marketing"
+  consentVersion  String    @map("consent_version")
+  consentGiven    Boolean   @map("consent_given")
+  legalLocale     String    @map("legal_locale")
+  ipAddress       String?   @map("ip_address")
+  userAgent       String?   @map("user_agent") @db.Text
+  createdAt       DateTime  @default(now()) @map("created_at")
+  
+  // Relations
+  lead            Lead      @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  
+  @@index([leadId])
+  @@map("consent_records")
+}

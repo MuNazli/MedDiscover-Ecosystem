@@ -1,0 +1,92 @@
+{
+  "common": {
+    "submit": "Gönder",
+    "cancel": "İptal",
+    "save": "Kaydet",
+    "delete": "Sil",
+    "edit": "Düzenle",
+    "back": "Geri",
+    "next": "İleri",
+    "loading": "Yükleniyor...",
+    "error": "Hata",
+    "success": "Başarılı",
+    "required": "Zorunlu alan"
+  },
+  "lead": {
+    "pageTitle": "Ücretsiz Danışmanlık İsteyin",
+    "pageSubtitle": "Formu doldurun, 24 saat içinde sizinle iletişime geçelim.",
+    "firstName": "Ad",
+    "lastName": "Soyad",
+    "email": "E-posta",
+    "phone": "Telefon",
+    "treatment": "İstenen Tedavi",
+    "selectTreatment": "Tedavi seçin",
+    "message": "Mesajınız (opsiyonel)",
+    "messagePlaceholder": "Talebinizi kısaca açıklayın...",
+    "preferredLanguage": "Tercih Edilen Dil",
+    "consentPrivacy": "Gizlilik politikasını okudum ve kabul ediyorum",
+    "consentAGB": "Şartlar ve koşulları kabul ediyorum",
+    "consentMarketing": "Bülten ve teklifler almak istiyorum (opsiyonel)",
+    "captcha": "Güvenlik Kodu",
+    "captchaPlaceholder": "Kodu girin",
+    "refreshCaptcha": "Yeni Kod",
+    "submit": "Başvuru Gönder",
+    "submitting": "Gönderiliyor..."
+  },
+  "success": {
+    "title": "Başvurunuz için teşekkür ederiz!",
+    "subtitle": "Başvurunuzu aldık ve 24-48 saat içinde sizinle iletişime geçeceğiz.",
+    "whatNext": "Şimdi ne olacak?",
+    "step1": "Medikal ekibimiz başvurunuzu inceleyecek",
+    "step2": "Danışmanımız sizi telefonla veya e-posta ile arayacak",
+    "step3": "Size özel bir teklif alacaksınız",
+    "emailSent": "E-posta adresinize bir onay e-postası gönderildi.",
+    "newRequest": "Yeni başvuru yap"
+  },
+  "treatments": {
+    "dental": "Diş Tedavisi",
+    "hair_transplant": "Saç Ekimi",
+    "plastic_surgery": "Plastik Cerrahi",
+    "eye_surgery": "Göz Ameliyatı",
+    "bariatric": "Obezite Cerrahisi",
+    "orthopedic": "Ortopedi",
+    "cardiology": "Kardiyoloji",
+    "oncology": "Onkoloji",
+    "fertility": "Tüp Bebek",
+    "other": "Diğer"
+  },
+  "admin": {
+    "login": "Giriş Yap",
+    "logout": "Çıkış Yap",
+    "email": "E-posta",
+    "password": "Şifre",
+    "leads": "Başvurular",
+    "search": "Ara",
+    "searchPlaceholder": "Ad, e-posta veya telefon ara...",
+    "noLeads": "Başvuru bulunamadı",
+    "name": "İsim",
+    "contact": "İletişim",
+    "status": "Durum",
+    "date": "Tarih",
+    "showing": "Gösterilen",
+    "of": "/",
+    "previous": "Önceki",
+    "nextPage": "Sonraki"
+  },
+  "status": {
+    "NEW": "Yeni",
+    "CONTACTED": "İletişime Geçildi",
+    "QUALIFIED": "Nitelikli",
+    "CONVERTED": "Dönüştürüldü",
+    "ARCHIVED": "Arşivlendi"
+  },
+  "errors": {
+    "required": "Bu alan zorunludur",
+    "invalidEmail": "Geçersiz e-posta adresi",
+    "invalidPhone": "Geçersiz telefon numarası",
+    "captchaRequired": "Lütfen güvenlik kodunu girin",
+    "captchaInvalid": "Geçersiz güvenlik kodu",
+    "serverError": "Bir hata oluştu. Lütfen tekrar deneyin.",
+    "rateLimited": "Çok fazla istek. Lütfen biraz bekleyin."
+  }
+}

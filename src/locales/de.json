@@ -1,0 +1,92 @@
+{
+  "common": {
+    "submit": "Absenden",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "back": "Zurück",
+    "next": "Weiter",
+    "loading": "Laden...",
+    "error": "Fehler",
+    "success": "Erfolgreich",
+    "required": "Pflichtfeld"
+  },
+  "lead": {
+    "pageTitle": "Kostenlose Beratung anfordern",
+    "pageSubtitle": "Füllen Sie das Formular aus und wir melden uns innerhalb von 24 Stunden bei Ihnen.",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "treatment": "Gewünschte Behandlung",
+    "selectTreatment": "Behandlung auswählen",
+    "message": "Ihre Nachricht (optional)",
+    "messagePlaceholder": "Beschreiben Sie kurz Ihr Anliegen...",
+    "preferredLanguage": "Bevorzugte Sprache",
+    "consentPrivacy": "Ich habe die Datenschutzerklärung gelesen und stimme zu",
+    "consentAGB": "Ich akzeptiere die Allgemeinen Geschäftsbedingungen",
+    "consentMarketing": "Ich möchte Newsletter und Angebote erhalten (optional)",
+    "captcha": "Sicherheitscode",
+    "captchaPlaceholder": "Code eingeben",
+    "refreshCaptcha": "Neuer Code",
+    "submit": "Anfrage absenden",
+    "submitting": "Wird gesendet..."
+  },
+  "success": {
+    "title": "Vielen Dank für Ihre Anfrage!",
+    "subtitle": "Wir haben Ihre Anfrage erhalten und werden uns innerhalb von 24-48 Stunden bei Ihnen melden.",
+    "whatNext": "Was passiert jetzt?",
+    "step1": "Unser medizinisches Team prüft Ihre Anfrage",
+    "step2": "Ein Berater wird Sie telefonisch oder per E-Mail kontaktieren",
+    "step3": "Sie erhalten ein individuelles Angebot",
+    "emailSent": "Eine Bestätigungs-E-Mail wurde an Ihre E-Mail-Adresse gesendet.",
+    "newRequest": "Neue Anfrage stellen"
+  },
+  "treatments": {
+    "dental": "Zahnbehandlung",
+    "hair_transplant": "Haartransplantation",
+    "plastic_surgery": "Plastische Chirurgie",
+    "eye_surgery": "Augenoperation",
+    "bariatric": "Adipositaschirurgie",
+    "orthopedic": "Orthopädie",
+    "cardiology": "Kardiologie",
+    "oncology": "Onkologie",
+    "fertility": "Fruchtbarkeitsbehandlung",
+    "other": "Sonstiges"
+  },
+  "admin": {
+    "login": "Anmelden",
+    "logout": "Abmelden",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "leads": "Leads",
+    "search": "Suchen",
+    "searchPlaceholder": "Name, E-Mail oder Telefon suchen...",
+    "noLeads": "Keine Leads gefunden",
+    "name": "Name",
+    "contact": "Kontakt",
+    "status": "Status",
+    "date": "Datum",
+    "showing": "Zeige",
+    "of": "von",
+    "previous": "Zurück",
+    "nextPage": "Weiter"
+  },
+  "status": {
+    "NEW": "Neu",
+    "CONTACTED": "Kontaktiert",
+    "QUALIFIED": "Qualifiziert",
+    "CONVERTED": "Konvertiert",
+    "ARCHIVED": "Archiviert"
+  },
+  "errors": {
+    "required": "Dieses Feld ist erforderlich",
+    "invalidEmail": "Ungültige E-Mail-Adresse",
+    "invalidPhone": "Ungültige Telefonnummer",
+    "captchaRequired": "Bitte geben Sie den Sicherheitscode ein",
+    "captchaInvalid": "Ungültiger Sicherheitscode",
+    "serverError": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+    "rateLimited": "Zu viele Anfragen. Bitte warten Sie einen Moment."
+  }
+}
