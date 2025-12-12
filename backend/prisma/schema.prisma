@@ -1,0 +1,130 @@
+// MedDiscover M01 - Lead Service Database Schema
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Lead (Patient Registration)
+model Lead {
+  id                String   @id @default(uuid())
+  
+  // Personal Information
+  firstName         String   @map("first_name")
+  lastName          String   @map("last_name")
+  email             String
+  phone             String
+  dateOfBirth       DateTime? @map("date_of_birth")
+  
+  // Medical Information
+  treatmentType     String   @map("treatment_type")
+  medicalDescription String?  @map("medical_description") @db.Text
+  preferredLanguage String   @default("de") @map("preferred_language")
+  
+  // GDPR Consents
+  consentPrivacy    Boolean  @default(false) @map("consent_privacy")
+  consentTerms      Boolean  @default(false) @map("consent_terms")
+  consentMarketing  Boolean  @default(false) @map("consent_marketing")
+  consentTimestamp  DateTime @default(now()) @map("consent_timestamp")
+  
+  // Metadata
+  ipAddress         String?  @map("ip_address")
+  userAgent         String?  @map("user_agent") @db.Text
+  source            String?  // e.g., "website", "referral"
+  status            LeadStatus @default(NEW)
+  
+  // Timestamps
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+  
+  // GDPR - Deletion tracking
+  deletedAt         DateTime? @map("deleted_at")
+  deletionReason    String?   @map("deletion_reason")
+  
+  // Relations
+  auditLogs         AuditLog[]
+  
+  @@map("leads")
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  CONVERTED
+  ARCHIVED
+}
+
+// Admin Users
+model Admin {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  firstName    String   @map("first_name")
+  lastName     String   @map("last_name")
+  role         AdminRole @default(STAFF)
+  isActive     Boolean  @default(true) @map("is_active")
+  lastLoginAt  DateTime? @map("last_login_at")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+  
+  // Relations
+  auditLogs    AuditLog[]
+  
+  @@map("admins")
+}
+
+enum AdminRole {
+  SUPER_ADMIN
+  ADMIN
+  STAFF
+}
+
+// Audit Log for GDPR compliance
+model AuditLog {
+  id          String   @id @default(uuid())
+  action      String   // e.g., "LEAD_CREATED", "LEAD_VIEWED", "LEAD_DELETED"
+  entityType  String   @map("entity_type") // e.g., "Lead", "Admin"
+  entityId    String   @map("entity_id")
+  oldValue    Json?    @map("old_value")
+  newValue    Json?    @map("new_value")
+  ipAddress   String?  @map("ip_address")
+  userAgent   String?  @map("user_agent") @db.Text
+  adminId     String?  @map("admin_id")
+  leadId      String?  @map("lead_id")
+  createdAt   DateTime @default(now()) @map("created_at")
+  
+  // Relations
+  admin       Admin?   @relation(fields: [adminId], references: [id])
+  lead        Lead?    @relation(fields: [leadId], references: [id])
+  
+  @@map("audit_logs")
+}
+
+// Consent Records (detailed GDPR tracking)
+model ConsentRecord {
+  id              String   @id @default(uuid())
+  leadEmail       String   @map("lead_email")
+  consentType     String   @map("consent_type") // "privacy", "terms", "marketing"
+  consentVersion  String   @map("consent_version") // version of the policy
+  consentGiven    Boolean  @map("consent_given")
+  ipAddress       String?  @map("ip_address")
+  userAgent       String?  @map("user_agent") @db.Text
+  createdAt       DateTime @default(now()) @map("created_at")
+  
+  @@map("consent_records")
+}
+
+// Captcha Sessions
+model CaptchaSession {
+  id        String   @id @default(uuid())
+  text      String
+  expiresAt DateTime @map("expires_at")
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now()) @map("created_at")
+  
+  @@map("captcha_sessions")
+}
