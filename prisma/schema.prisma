@@ -1,0 +1,208 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Enums for PostgreSQL
+enum ContactPreference {
+  WHATSAPP
+  PHONE
+  EMAIL
+}
+
+enum LeadStatus {
+  NEW
+  IN_REVIEW
+  OFFER_SENT
+  CLOSED
+}
+
+enum SenderType {
+  PATIENT
+  CLINIC
+  ADMIN
+}
+
+enum TrustStatus {
+  ACTIVE
+  RISKY_HIDDEN
+  BLACKLISTED
+}
+
+// Note: Enums are native in PostgreSQL. For SQLite dev, use DATABASE_URL="file:./dev.db"
+// ContactPreference: WHATSAPP | PHONE | EMAIL
+// LeadStatus: NEW | IN_REVIEW | OFFER_SENT | CLOSED
+// SenderType: PATIENT | CLINIC | ADMIN
+// TrustStatus: ACTIVE | RISKY_HIDDEN | BLACKLISTED
+// TrustAppliesTo: LEAD
+
+model Clinic {
+  id        String   @id @default(cuid())
+  name      String
+  country   String   // ISO-2 country code
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  leads Lead[]
+
+  @@map("clinics")
+}
+
+model Treatment {
+  id        String   @id @default(cuid())
+  name      String
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  leads Lead[]
+
+  @@map("treatments")
+}
+
+model Lead {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  locale    String?
+  name      String?
+  email     String?
+  phone     String?
+
+  // Patient Information
+  patientName        String
+  country            String
+  contactPreference  ContactPreference @default(WHATSAPP)
+  requestedProcedure String
+  gdprConsent        Boolean           @default(false)
+
+  // Status & Admin
+  status LeadStatus @default(NEW)
+
+  // TrustScore (M07 Rules Engine)
+  ruleScore   Int         @default(80) // Score calculated from active rules
+  finalScore  Int         @default(80) // Final score (override if set, else ruleScore)
+  trustStatus TrustStatus @default(ACTIVE)
+  scoreOverride   Int?
+  overrideReason  String?
+  overrideBy      String?
+  overrideAt      DateTime?
+  trustUpdatedAt  DateTime?
+
+  // Matching (M03)
+  clinicId    String?
+  treatmentId String?
+  clinic      Clinic?    @relation(fields: [clinicId], references: [id])
+  treatment   Treatment? @relation(fields: [treatmentId], references: [id])
+
+  // Chat (M06)
+  conversation Conversation?
+
+  notes  LeadNote[]
+  audits LeadAudit[]
+  trustScoreEvents TrustScoreEvent[]
+  trustRuleRuns    TrustRuleRun[]
+
+  @@map("leads")
+}
+
+model LeadNote {
+  id        String   @id @default(cuid())
+  leadId    String
+  lead      Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  content   String
+  createdAt DateTime @default(now())
+  author    String?
+
+  @@index([leadId, createdAt])
+}
+
+model LeadAudit {
+  id        String   @id @default(cuid())
+  leadId    String
+  lead      Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  action    String
+  meta      String?
+  createdAt DateTime @default(now())
+  actor     String?
+
+  @@index([leadId, createdAt])
+}
+
+model TrustScoreEvent {
+  id          String   @id @default(cuid())
+  leadId      String
+  lead        Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  kind        String   // RULE_RECALC | OVERRIDE_SET | OVERRIDE_CLEARED
+  delta       Int?
+  scoreBefore Int?
+  scoreAfter  Int?
+  meta        String?  // JSON string for SQLite
+  createdAt   DateTime @default(now())
+  actor       String?  // admin
+
+  @@index([leadId, createdAt])
+}
+
+model Conversation {
+  id        String   @id @default(cuid())
+  leadId    String   @unique
+  lead      Lead     @relation(fields: [leadId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  messages Message[]
+
+  @@map("conversations")
+}
+
+model Message {
+  id             String       @id @default(cuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id])
+  senderType     SenderType
+  body           String       // sanitized text only
+  blocked        Boolean      @default(false)
+  blockReason    String?
+  createdAt      DateTime     @default(now())
+
+  @@index([conversationId, createdAt])
+  @@map("messages")
+}
+
+model TrustRule {
+  id             String   @id @default(cuid())
+  code           String   @unique // RULE_MISSING_EMAIL, RULE_HAS_NOTE, etc.
+  titleKey       String   // i18n key for title
+  descriptionKey String   // i18n key for description
+  delta          Int      // Score impact: -20, +5, etc.
+  isActive       Boolean  @default(true)
+  appliesTo      String   @default("LEAD") // Future: CLINIC, TREATMENT
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@map("trust_rules")
+}
+
+model TrustRuleRun {
+  id          String   @id @default(cuid())
+  leadId      String
+  lead        Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  ruleCode    String   // Which rule was applied
+  delta       Int      // Score impact for this run
+  scoreBefore Int      // Score before this rule
+  scoreAfter  Int      // Score after this rule
+  runId       String   // Batch identifier for grouping multiple rules
+  actor       String?  // admin | system
+  createdAt   DateTime @default(now())
+
+  @@index([leadId, createdAt])
+  @@index([runId])
+  @@map("trust_rule_runs")
+}

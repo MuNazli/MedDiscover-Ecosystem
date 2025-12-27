@@ -1,0 +1,92 @@
+﻿{
+  "nav": {
+    "home": "Ana Sayfa",
+    "treatments": "Tedaviler",
+    "clinics": "Klinikler",
+    "flights": "Uçuşlar",
+    "contact": "İletişim",
+    "getStarted": "Başla",
+    "backHome": "← Ana Sayfaya Dön"
+  },
+
+  "hero": {
+    "title": "Kaliteli Sağlık Hizmetleri,",
+    "titleAccent": "Dünyanın Her Yerinden Erişilebilir",
+    "subtitle": "MedDiscover, sizi güvenilir ve uluslararası standartlara sahip kliniklerle buluşturur. Süreciniz ilk başvurudan tedavi sonrası takibe kadar profesyonelce yönetilir.",
+    "ctaPrimary": "Başvurumu Başlat →",
+    "ctaSecondary": "Klinikleri İncele"
+  },
+
+  "featuredClinic": {
+    "label": "Öne Çıkan Klinik",
+    "badge": "Uluslararası Akreditasyonlu",
+    "note": "Örnek klinik – MVP aşamasında yer tutucu olarak kullanılır",
+    "reviews": "Değerlendirme"
+  },
+
+  "stats": {
+    "patients": "Tedavi Edilen Hasta",
+    "clinics": "Partner Klinik",
+    "satisfaction": "Hasta Memnuniyeti"
+  },
+
+  "form": {
+    "title": "Kişisel Danışmanlık Talep Edin",
+    "subtitle": "Ücretsiz · Taahhütsüz · Güvenli",
+    "fullName": "Ad Soyad",
+    "fullNamePlaceholder": "Adınız Soyadınız",
+    "email": "E-posta Adresi",
+    "emailPlaceholder": "ornek@email.com",
+    "phone": "Telefon Numarası",
+    "phonePlaceholder": "+90 555 123 4567",
+    "language": "Tercih Edilen Dil",
+    "languageOptions": {
+      "placeholder": "Dil seçin...",
+      "de": "Deutsch",
+      "en": "English",
+      "tr": "Türkçe"
+    },
+    "treatment": "İlgilendiğiniz Tedavi",
+    "treatmentOptions": {
+      "placeholder": "Tedavi seçin...",
+      "dentalImplant": "Diş İmplantı",
+      "dentalVeneers": "Diş Kaplama (Veneer)",
+      "teethWhitening": "Diş Beyazlatma",
+      "hairTransplant": "Saç Ekimi",
+      "eyeSurgery": "Göz Ameliyatı (LASIK)",
+      "cosmetic": "Estetik Cerrahi",
+      "other": "Diğer"
+    },
+    "notes": "Eklemek İstedikleriniz (isteğe bağlı)",
+    "notesPlaceholder": "Sorularınızı veya isteklerinizi yazın...",
+    "consent": "Kişisel ve sağlık bilgilerimin işlenmesini kabul ediyorum:",
+    "consentPrivacy": "Gizlilik Politikası",
+    "consentAnd": "ve",
+    "consentTerms": "Kullanım Şartları",
+    "consentEnd": ".",
+    "submit": "Güvenli Danışmanlık Talep Et",
+    "submitting": "Gönderiliyor...",
+    "helper": "MedDiscover hasta danışmanlarından biri en kısa sürede sizinle iletişime geçecektir.",
+    "successTitle": "Talebiniz Alındı",
+    "successMessage": "İlginiz için teşekkür ederiz. Ekibimiz 24 saat içinde sizinle iletişime geçecektir.",
+    "errorConsent": "Lütfen gizlilik politikasını kabul edin.",
+    "errorGeneric": "Bir hata oluştu. Lütfen tekrar deneyin.",
+    "errorConnection": "Bağlantı hatası. Lütfen tekrar deneyin."
+  },
+
+  "trust": {
+    "title": "Neden MedDiscover?",
+    "verified": "Onaylı ve Güvenilir Klinikler",
+    "gdpr": "Verileriniz Güvenle Korunur",
+    "response": "24 Saat İçinde Yanıt",
+    "support": "Kişisel Hasta Danışmanı"
+  },
+
+  "footer": {
+    "about": "MedDiscover Hakkında",
+    "privacy": "Gizlilik Politikası",
+    "terms": "Kullanım Şartları",
+    "imprint": "Yasal Bilgiler",
+    "copyright": "© 2025 MedDiscover"
+  }
+}

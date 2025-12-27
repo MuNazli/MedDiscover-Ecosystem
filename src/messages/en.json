@@ -1,0 +1,92 @@
+﻿{
+  "nav": {
+    "home": "Home",
+    "treatments": "Treatments",
+    "clinics": "Clinics",
+    "flights": "Flights",
+    "contact": "Contact",
+    "getStarted": "Get Started",
+    "backHome": "← Back to Home"
+  },
+
+  "hero": {
+    "title": "Quality Healthcare,",
+    "titleAccent": "Available Worldwide",
+    "subtitle": "We help you access trusted clinics and guide you through your treatment journey – from your first enquiry to aftercare support.",
+    "ctaPrimary": "Start Your Application →",
+    "ctaSecondary": "Explore Clinics"
+  },
+
+  "featuredClinic": {
+    "label": "Featured Clinic",
+    "badge": "Internationally Accredited",
+    "note": "Sample clinic – placeholder for MVP",
+    "reviews": "reviews"
+  },
+
+  "stats": {
+    "patients": "Patients Helped",
+    "clinics": "Partner Clinics",
+    "satisfaction": "Satisfaction Rate"
+  },
+
+  "form": {
+    "title": "Request Your Free Consultation",
+    "subtitle": "Free · No Commitment · Secure",
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "Your full name",
+    "email": "Email Address",
+    "emailPlaceholder": "you@example.com",
+    "phone": "Phone Number",
+    "phonePlaceholder": "+44 20 1234 5678",
+    "language": "Preferred Language",
+    "languageOptions": {
+      "placeholder": "Select language...",
+      "de": "Deutsch",
+      "en": "English",
+      "tr": "Türkçe"
+    },
+    "treatment": "Treatment of Interest",
+    "treatmentOptions": {
+      "placeholder": "Select treatment...",
+      "dentalImplant": "Dental Implants",
+      "dentalVeneers": "Dental Veneers",
+      "teethWhitening": "Teeth Whitening",
+      "hairTransplant": "Hair Transplant",
+      "eyeSurgery": "Eye Surgery (LASIK)",
+      "cosmetic": "Cosmetic Surgery",
+      "other": "Other"
+    },
+    "notes": "Additional Information (optional)",
+    "notesPlaceholder": "Tell us about your needs or questions...",
+    "consent": "I agree to the processing of my personal and health data as described in the",
+    "consentPrivacy": "Privacy Policy",
+    "consentAnd": "and",
+    "consentTerms": "Terms of Service",
+    "consentEnd": ".",
+    "submit": "Request Secure Consultation",
+    "submitting": "Sending...",
+    "helper": "A MedDiscover patient coordinator will be in touch with you shortly.",
+    "successTitle": "We Received Your Request",
+    "successMessage": "Thank you for reaching out. Our team will contact you within 24 hours to discuss your options.",
+    "errorConsent": "Please accept the privacy policy to continue.",
+    "errorGeneric": "Something went wrong. Please try again.",
+    "errorConnection": "Connection error. Please check your internet and try again."
+  },
+
+  "trust": {
+    "title": "Why Choose MedDiscover?",
+    "verified": "Verified Partner Clinics",
+    "gdpr": "Your Data is Protected",
+    "response": "Response Within 24 Hours",
+    "support": "Personal Patient Coordinator"
+  },
+
+  "footer": {
+    "about": "About MedDiscover",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "imprint": "Legal Notice",
+    "copyright": "© 2025 MedDiscover"
+  }
+}
