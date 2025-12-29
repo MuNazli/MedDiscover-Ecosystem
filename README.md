@@ -13,3 +13,6 @@ npm run db:migrate:dev
 ```bash
 npm run db:migrate:prod
 ```
+
+## Windows Build Note (EPERM .next/trace)
+If `npm run build` fails with `EPERM` on `.next/trace`, stop any running Node/Next processes and delete the `.next` folder, then rerun the build.

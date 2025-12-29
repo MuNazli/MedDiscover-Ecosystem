@@ -1,35 +1,30 @@
-﻿{
+{
   "nav": {
-    "home": "Startseite",
-    "treatments": "Behandlungen",
-    "clinics": "Kliniken",
-    "flights": "Flüge",
-    "contact": "Kontakt",
-    "getStarted": "Jetzt starten",
-    "backHome": "← Zurück zur Startseite"
+    "steps": "Ablauf",
+    "verified": "Vertrauen",
+    "faq": "FAQ",
+    "leadCta": "Beratung",
+    "getStarted": "Beratung starten",
+    "backHome": "Zurück zur Startseite"
   },
-
   "hero": {
     "title": "Premium-Gesundheitsversorgung,",
     "titleAccent": "weltweit zugänglich",
-    "subtitle": "Wir verbinden Patientinnen und Patienten mit geprüften internationalen Kliniken – sicher, transparent und professionell begleitet von der ersten Anfrage bis zur Nachsorge.",
-    "ctaPrimary": "Antrag starten →",
-    "ctaSecondary": "Kliniken entdecken"
+    "subtitle": "Wir verbinden Patientinnen und Patienten mit geprüften internationalen Kliniken – transparent, sicher und begleitet von der ersten Anfrage bis zur Nachsorge.",
+    "ctaPrimary": "Beratung anfragen",
+    "ctaSecondary": "So funktioniert es"
   },
-
   "featuredClinic": {
     "label": "Empfohlene Klinik",
     "badge": "International akkreditiert",
-    "note": "Beispielklinik – Platzhalter für MVP",
+    "note": "Sorgfältig geprüfte Partner",
     "reviews": "Bewertungen"
   },
-
   "stats": {
-    "patients": "Behandelte Patienten",
+    "patients": "Begleitete Patientinnen und Patienten",
     "clinics": "Partnerkliniken",
     "satisfaction": "Zufriedenheitsrate"
   },
-
   "form": {
     "title": "Persönliche Beratung anfragen",
     "subtitle": "Kostenlos · Unverbindlich · Sicher",
@@ -68,56 +63,55 @@
     "submitting": "Wird gesendet...",
     "helper": "Ein medizinischer Koordinator von MedDiscover wird sich zeitnah mit Ihnen in Verbindung setzen.",
     "successTitle": "Anfrage erhalten",
-    "successMessage": "Vielen Dank für Ihr Interesse. Unser Team wird sich innerhalb von 24 Stunden mit Ihnen in Verbindung setzen.",
+    "successMessage": "Vielen Dank für Ihr Interesse. Unser Team meldet sich in Kürze.",
     "errorConsent": "Bitte akzeptieren Sie die Datenschutzerklärung.",
     "errorGeneric": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
     "errorConnection": "Verbindungsfehler. Bitte versuchen Sie es erneut."
   },
-
   "trust": {
     "title": "Warum MedDiscover?",
     "verified": "Geprüfte Partnerkliniken",
     "gdpr": "DSGVO-konforme Datenverarbeitung",
-    "response": "Antwort innerhalb 24h",
+    "response": "Zeitnahe Rückmeldung",
     "support": "Mehrsprachige Betreuung"
   },
-
   "howItWorks": {
-    "title": "So funktioniert es",
-    "subtitle": "Ihr Weg zur Behandlung – transparent und sicher",
-    "step1Title": "1. Anfrage stellen",
+    "title": "So funktioniert MedDiscover",
+    "subtitle": "Ein klarer Ablauf von der Anfrage bis zur Terminplanung",
+    "step1Title": "1. Anfrage senden",
     "step1Desc": "Füllen Sie das kurze Formular aus. Kostenlos und unverbindlich.",
-    "step2Title": "2. Beratung erhalten",
-    "step2Desc": "Innerhalb von 24 Stunden meldet sich ein medizinischer Koordinator bei Ihnen.",
-    "step3Title": "3. Klinik auswählen",
-    "step3Desc": "Sie erhalten passende Klinikvorschläge mit transparenten Informationen.",
-    "step4Title": "4. Behandlung durchführen",
-    "step4Desc": "Wir organisieren alles – von der Reiseplanung bis zur Nachsorge."
+    "step2Title": "2. Rückmeldung erhalten",
+    "step2Desc": "Ein medizinischer Koordinator meldet sich mit den nächsten Schritten.",
+    "step3Title": "3. Optionen vergleichen",
+    "step3Desc": "Sie erhalten geprüfte Klinikvorschläge mit transparenten Informationen.",
+    "step4Title": "4. Behandlung planen",
+    "step4Desc": "Wir unterstützen bei Termin- und Reiseplanung sowie der Vorbereitung."
   },
-
   "verifiedPartners": {
     "title": "Verifizierte Partnerkliniken",
-    "subtitle": "Wir arbeiten ausschließlich mit international zertifizierten und geprüften medizinischen Einrichtungen zusammen.",
-    "accreditation": "Internationale Akkreditierung",
-    "experience": "Langjährige Erfahrung",
-    "standards": "Europäische Qualitätsstandards",
-    "transparent": "Transparente Preisgestaltung"
+    "subtitle": "Wir arbeiten ausschließlich mit sorgfältig geprüften, international erfahrenen Einrichtungen.",
+    "accreditation": "Internationale Qualitätsstandards",
+    "experience": "Erfahrene Fachärztinnen und Fachärzte",
+    "standards": "Klare Prozesse und feste Ansprechpartner",
+    "transparent": "Transparente Preisübersichten"
   },
-
   "faq": {
-    "title": "Häufig gestellte Fragen",
+    "title": "Häufige Fragen",
     "q1": "Ist MedDiscover ein Krankenhaus?",
-    "a1": "Nein, MedDiscover ist eine Vermittlungsplattform. Wir verbinden Patienten mit geprüften internationalen Kliniken und begleiten den gesamten Prozess.",
-    "q2": "Wie werden die Kliniken ausgewählt?",
-    "a2": "Alle Partnerkliniken durchlaufen einen strengen Prüfprozess. Wir berücksichtigen internationale Akkreditierungen, Erfahrung der Ärzte und Patientenzufriedenheit.",
-    "q3": "Welche Kosten entstehen für mich?",
-    "a3": "Die Beratung und Vermittlung durch MedDiscover sind für Sie kostenlos. Sie zahlen nur für die Behandlung direkt an die Klinik.",
-    "q4": "In welchen Ländern arbeiten Sie?",
-    "a4": "Wir arbeiten mit Kliniken in der Türkei, Deutschland und weiteren europäischen Ländern zusammen. Je nach Behandlung empfehlen wir die passende Region.",
+    "a1": "Nein. MedDiscover ist eine Vermittlungs- und Beratungsplattform. Wir verbinden Sie mit geprüften Partnerkliniken und begleiten den Ablauf.",
+    "q2": "Wie werden Kliniken ausgewählt?",
+    "a2": "Wir prüfen Qualifikationen, Qualitätsstandards und die Erfahrung mit internationalen Patientinnen und Patienten.",
+    "q3": "Entstehen für mich zusätzliche Kosten?",
+    "a3": "Die Beratung durch MedDiscover ist für Sie kostenlos. Behandlungskosten bezahlen Sie direkt an die Klinik.",
+    "q4": "In welchen Ländern arbeitet MedDiscover?",
+    "a4": "Wir arbeiten mit Partnerkliniken in mehreren Ländern und empfehlen passende Optionen je nach Bedarf.",
     "q5": "Wie sicher sind meine Daten?",
-    "a5": "Ihre Daten werden DSGVO-konform verarbeitet und verschlüsselt gespeichert. Wir geben Ihre Informationen nur mit Ihrer ausdrücklichen Zustimmung an Partnerkliniken weiter."
+    "a5": "Ihre Daten werden DSGVO-konform verarbeitet und nur mit Ihrer Zustimmung weitergegeben."
   },
-
+  "leadCta": {
+    "title": "Beratung anfragen",
+    "subtitle": "Beschreiben Sie Ihr Anliegen – wir melden uns mit passenden Optionen."
+  },
   "footer": {
     "about": "Über MedDiscover",
     "privacy": "Datenschutz",

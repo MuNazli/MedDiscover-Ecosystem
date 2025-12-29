@@ -1,37 +1,32 @@
-﻿{
+{
   "nav": {
-    "home": "Ana Sayfa",
-    "treatments": "Tedaviler",
-    "clinics": "Klinikler",
-    "flights": "Uçuşlar",
-    "contact": "İletişim",
-    "getStarted": "Başla",
-    "backHome": "← Ana Sayfaya Dön"
+    "steps": "Süreç",
+    "verified": "Güven",
+    "faq": "SSS",
+    "leadCta": "Danışma",
+    "getStarted": "Danışma başlat",
+    "backHome": "Ana sayfaya dön"
   },
-
   "hero": {
-    "title": "Kaliteli Sağlık Hizmetleri,",
-    "titleAccent": "Dünyanın Her Yerinden Erişilebilir",
-    "subtitle": "MedDiscover, sizi güvenilir ve uluslararası standartlara sahip kliniklerle buluşturur. Süreciniz ilk başvurudan tedavi sonrası takibe kadar profesyonelce yönetilir.",
-    "ctaPrimary": "Başvurumu Başlat →",
-    "ctaSecondary": "Klinikleri İncele"
+    "title": "Kaliteli sağlık hizmetleri,",
+    "titleAccent": "dünyanın her yerinden erişilebilir",
+    "subtitle": "MedDiscover, sizi güvenilir ve uluslararası standartlara sahip kliniklerle buluşturur. Süreç, ilk başvurudan takip aşamasına kadar şeffaf ve güvenli şekilde yönetilir.",
+    "ctaPrimary": "Danışma talep et",
+    "ctaSecondary": "Nasıl çalışır?"
   },
-
   "featuredClinic": {
-    "label": "Öne Çıkan Klinik",
-    "badge": "Uluslararası Akreditasyonlu",
-    "note": "Örnek klinik – MVP aşamasında yer tutucu olarak kullanılır",
+    "label": "Öne çıkan klinik",
+    "badge": "Uluslararası akreditasyon",
+    "note": "Seçili partner klinikler",
     "reviews": "Değerlendirme"
   },
-
   "stats": {
-    "patients": "Tedavi Edilen Hasta",
-    "clinics": "Partner Klinik",
-    "satisfaction": "Hasta Memnuniyeti"
+    "patients": "Desteklenen hastalar",
+    "clinics": "Partner klinikler",
+    "satisfaction": "Memnuniyet oranı"
   },
-
   "form": {
-    "title": "Kişisel Danışmanlık Talep Edin",
+    "title": "Kişisel danışmanlık talep edin",
     "subtitle": "Ücretsiz · Taahhütsüz · Güvenli",
     "fullName": "Ad Soyad",
     "fullNamePlaceholder": "Adınız Soyadınız",
@@ -39,90 +34,89 @@
     "emailPlaceholder": "ornek@email.com",
     "phone": "Telefon Numarası",
     "phonePlaceholder": "+90 555 123 4567",
-    "language": "Tercih Edilen Dil",
+    "language": "Tercih edilen dil",
     "languageOptions": {
       "placeholder": "Dil seçin...",
       "de": "Deutsch",
       "en": "English",
       "tr": "Türkçe"
     },
-    "treatment": "İlgilendiğiniz Tedavi",
+    "treatment": "İlgilendiğiniz tedavi",
     "treatmentOptions": {
       "placeholder": "Tedavi seçin...",
-      "dentalImplant": "Diş İmplantı",
-      "dentalVeneers": "Diş Kaplama (Veneer)",
-      "teethWhitening": "Diş Beyazlatma",
-      "hairTransplant": "Saç Ekimi",
-      "eyeSurgery": "Göz Ameliyatı (LASIK)",
-      "cosmetic": "Estetik Cerrahi",
+      "dentalImplant": "Diş implantı",
+      "dentalVeneers": "Diş kaplama (Veneer)",
+      "teethWhitening": "Diş beyazlatma",
+      "hairTransplant": "Saç ekimi",
+      "eyeSurgery": "Göz ameliyatı (LASIK)",
+      "cosmetic": "Estetik cerrahi",
       "other": "Diğer"
     },
-    "notes": "Eklemek İstedikleriniz (isteğe bağlı)",
+    "notes": "Eklemek istedikleriniz (isteğe bağlı)",
     "notesPlaceholder": "Sorularınızı veya isteklerinizi yazın...",
     "consent": "Kişisel ve sağlık bilgilerimin işlenmesini kabul ediyorum:",
     "consentPrivacy": "Gizlilik Politikası",
     "consentAnd": "ve",
     "consentTerms": "Kullanım Şartları",
     "consentEnd": ".",
-    "submit": "Güvenli Danışmanlık Talep Et",
+    "submit": "Güvenli danışmanlık talep et",
     "submitting": "Gönderiliyor...",
-    "helper": "MedDiscover hasta danışmanlarından biri en kısa sürede sizinle iletişime geçecektir.",
-    "successTitle": "Talebiniz Alındı",
-    "successMessage": "İlginiz için teşekkür ederiz. Ekibimiz 24 saat içinde sizinle iletişime geçecektir.",
+    "helper": "MedDiscover hasta danışmanlarından biri kısa sürede sizinle iletişime geçecektir.",
+    "successTitle": "Talebiniz alındı",
+    "successMessage": "İlginiz için teşekkür ederiz. Ekibimiz yakında sizinle iletişime geçecektir.",
     "errorConsent": "Lütfen gizlilik politikasını kabul edin.",
     "errorGeneric": "Bir hata oluştu. Lütfen tekrar deneyin.",
     "errorConnection": "Bağlantı hatası. Lütfen tekrar deneyin."
   },
-
   "trust": {
     "title": "Neden MedDiscover?",
-    "verified": "Onaylı ve Güvenilir Klinikler",
-    "gdpr": "Verileriniz Güvenle Korunur",
-    "response": "24 Saat İçinde Yanıt",
-    "support": "Kişisel Hasta Danışmanı"
+    "verified": "Onaylı partner klinikler",
+    "gdpr": "KVKK/GDPR uyumlu veri yönetimi",
+    "response": "Hızlı geri dönüş",
+    "support": "Çok dilli destek"
   },
-
   "howItWorks": {
-    "title": "Nasıl Çalışır?",
-    "subtitle": "Tedaviye giden yolunuz – şeffaf ve güvenli",
-    "step1Title": "1. Başvuru Yapın",
+    "title": "MedDiscover nasıl çalışır?",
+    "subtitle": "Başvurudan planlamaya kadar şeffaf bir süreç",
+    "step1Title": "1. Başvuru yapın",
     "step1Desc": "Kısa formu doldurun. Ücretsiz ve taahhütsüz.",
-    "step2Title": "2. Danışmanlık Alın",
-    "step2Desc": "24 saat içinde bir hasta danışmanı sizinle iletişime geçer.",
-    "step3Title": "3. Klinik Seçin",
-    "step3Desc": "Size uygun klinik önerileri ve şeffaf bilgilerle karşılaştırma yapın.",
-    "step4Title": "4. Tedavi Olun",
-    "step4Desc": "Seyahat planlamasından takibe kadar her şeyi organize ediyoruz."
+    "step2Title": "2. Geri dönüş alın",
+    "step2Desc": "Hasta danışmanı sizinle iletişime geçer ve süreci açıklar.",
+    "step3Title": "3. Seçenekleri karşılaştırın",
+    "step3Desc": "Uygun klinik önerilerini ve detayları birlikte değerlendiririz.",
+    "step4Title": "4. Planlamayı tamamlayın",
+    "step4Desc": "Randevu ve seyahat planlamasında destek sağlarız."
   },
-
   "verifiedPartners": {
-    "title": "Doğrulanmış Partner Klinikler",
-    "subtitle": "Sadece uluslararası sertifikalara sahip, titizlikle seçilmiş tıbbi kurumlarla çalışıyoruz.",
-    "accreditation": "Uluslararası Akreditasyon",
-    "experience": "Uzun Yıllara Dayanan Deneyim",
-    "standards": "Avrupa Kalite Standartları",
-    "transparent": "Şeffaf Fiyatlandırma"
+    "title": "Doğrulanmış partner klinikler",
+    "subtitle": "Uluslararası deneyime sahip, titizlikle değerlendirilen kurumlarla çalışıyoruz.",
+    "accreditation": "Uluslararası kalite standartları",
+    "experience": "Deneyimli uzman hekim kadroları",
+    "standards": "Net süreçler ve şeffaf bilgilendirme",
+    "transparent": "Şeffaf maliyet görünümü"
   },
-
   "faq": {
-    "title": "Sıkça Sorulan Sorular",
+    "title": "Sıkça sorulan sorular",
     "q1": "MedDiscover bir hastane mi?",
-    "a1": "Hayır, MedDiscover bir aracı platformdur. Hastaları onaylı uluslararası kliniklerle buluşturur ve tüm süreci yönetiriz.",
+    "a1": "Hayır. MedDiscover bir danışmanlık ve yönlendirme platformudur. Sizi partner kliniklerle buluşturur ve süreci koordine eder.",
     "q2": "Klinikler nasıl seçiliyor?",
-    "a2": "Tüm partner klinikler katı bir değerlendirme sürecinden geçer. Uluslararası akreditasyonları, doktor deneyimini ve hasta memnuniyetini dikkate alıyoruz.",
-    "q3": "Benim için ne kadar ücret var?",
-    "a3": "MedDiscover'ın danışmanlık ve aracılık hizmeti sizin için tamamen ücretsizdir. Sadece tedavi ücretini doğrudan kliniğe ödersiniz.",
+    "a2": "Kliniklerin nitelikleri, kalite standartları ve uluslararası hasta deneyimleri değerlendirilir.",
+    "q3": "Benim için ek bir ücret var mı?",
+    "a3": "MedDiscover danışmanlığı sizin için ücretsizdir. Tedavi ücretini doğrudan kliniğe ödersiniz.",
     "q4": "Hangi ülkelerde çalışıyorsunuz?",
-    "a4": "Türkiye, Almanya ve diğer Avrupa ülkelerindeki kliniklerle çalışıyoruz. Tedaviye göre size en uygun bölgeyi öneriyoruz.",
+    "a4": "Birden fazla ülkedeki partner kliniklerle çalışıyoruz ve ihtiyacınıza uygun seçenekler sunuyoruz.",
     "q5": "Verilerim ne kadar güvenli?",
-    "a5": "Verileriniz GDPR standartlarına uygun şekilde işlenir ve şifreli olarak saklanır. Bilgilerinizi yalnızca açık onayınızla partner kliniklere iletiriz."
+    "a5": "Verileriniz KVKK/GDPR standartlarına uygun şekilde işlenir ve yalnızca onayınızla paylaşılır."
   },
-
+  "leadCta": {
+    "title": "Danışma talep et",
+    "subtitle": "İhtiyacınızı paylaşın, size uygun seçeneklerle geri dönelim."
+  },
   "footer": {
-    "about": "MedDiscover Hakkında",
-    "privacy": "Gizlilik Politikası",
-    "terms": "Kullanım Şartları",
-    "imprint": "Yasal Bilgiler",
+    "about": "MedDiscover hakkında",
+    "privacy": "Gizlilik",
+    "terms": "Kullanım şartları",
+    "imprint": "Yasal bilgi",
     "copyright": "© 2025 MedDiscover"
   }
 }

@@ -74,9 +74,9 @@ export default function LeadFormGlass({ locale, messages }: LeadFormGlassProps) 
   }
 
   return (
-    <div style={{ display: "flex", gap: "var(--s-32)", alignItems: "flex-start" }}>
+    <div className="lead-form-layout">
       {/* Main Form Widget */}
-      <div className="glass-strong form-widget" style={{ width: 480 }}>
+      <div className="glass-strong form-widget lead-form-widget">
         <h2>{form.title}</h2>
         <p className="subtitle">{form.subtitle}</p>
 
@@ -200,7 +200,7 @@ export default function LeadFormGlass({ locale, messages }: LeadFormGlassProps) 
       </div>
 
       {/* Trust Card */}
-      <div className="glass-card trust-card" style={{ width: 280 }}>
+      <div className="glass-card trust-card lead-form-trust">
         <h4>{trust.title}</h4>
         
         <div className="trust-item">

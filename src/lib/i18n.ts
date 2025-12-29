@@ -1,4 +1,4 @@
-﻿import de from "@/messages/de.json";
+import de from "@/messages/de.json";
 import en from "@/messages/en.json";
 import tr from "@/messages/tr.json";
 
@@ -9,7 +9,7 @@ export const DEFAULT_LOCALE: Locale = "de";
 
 export const localeNames: Record<Locale, string> = {
   de: "Deutsch",
-  tr: "Türkçe",
+  tr: "Turkce",
 };
 
 export type Messages = typeof en;

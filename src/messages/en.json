@@ -1,128 +1,122 @@
-﻿{
+{
   "nav": {
-    "home": "Home",
-    "treatments": "Treatments",
-    "clinics": "Clinics",
-    "flights": "Flights",
-    "contact": "Contact",
-    "getStarted": "Get Started",
-    "backHome": "← Back to Home"
+    "steps": "Steps",
+    "verified": "Trust",
+    "faq": "FAQ",
+    "leadCta": "Consultation",
+    "getStarted": "Start consultation",
+    "backHome": "Back to home"
   },
-
   "hero": {
-    "title": "Quality Healthcare,",
-    "titleAccent": "Available Worldwide",
-    "subtitle": "We help you access trusted clinics and guide you through your treatment journey – from your first enquiry to aftercare support.",
-    "ctaPrimary": "Start Your Application →",
-    "ctaSecondary": "Explore Clinics"
+    "title": "Quality healthcare,",
+    "titleAccent": "accessible worldwide",
+    "subtitle": "MedDiscover connects patients with vetted international clinics with a transparent, secure process from first inquiry to follow-up.",
+    "ctaPrimary": "Request consultation",
+    "ctaSecondary": "How it works"
   },
-
   "featuredClinic": {
-    "label": "Featured Clinic",
-    "badge": "Internationally Accredited",
-    "note": "Sample clinic – placeholder for MVP",
-    "reviews": "reviews"
+    "label": "Featured clinic",
+    "badge": "International accreditation",
+    "note": "Carefully vetted partners",
+    "reviews": "Reviews"
   },
-
   "stats": {
-    "patients": "Patients Helped",
-    "clinics": "Partner Clinics",
-    "satisfaction": "Satisfaction Rate"
+    "patients": "Supported patients",
+    "clinics": "Partner clinics",
+    "satisfaction": "Satisfaction rate"
   },
-
   "form": {
-    "title": "Request Your Free Consultation",
-    "subtitle": "Free · No Commitment · Secure",
-    "fullName": "Full Name",
-    "fullNamePlaceholder": "Your full name",
-    "email": "Email Address",
-    "emailPlaceholder": "you@example.com",
-    "phone": "Phone Number",
-    "phonePlaceholder": "+44 20 1234 5678",
-    "language": "Preferred Language",
+    "title": "Request personal consultation",
+    "subtitle": "Free · No obligation · Secure",
+    "fullName": "Full name",
+    "fullNamePlaceholder": "Jane Doe",
+    "email": "Email address",
+    "emailPlaceholder": "jane@example.com",
+    "phone": "Phone number",
+    "phonePlaceholder": "+1 555 123 4567",
+    "language": "Preferred language",
     "languageOptions": {
       "placeholder": "Select language...",
       "de": "Deutsch",
       "en": "English",
       "tr": "Türkçe"
     },
-    "treatment": "Treatment of Interest",
+    "treatment": "Requested treatment",
     "treatmentOptions": {
       "placeholder": "Select treatment...",
-      "dentalImplant": "Dental Implants",
-      "dentalVeneers": "Dental Veneers",
-      "teethWhitening": "Teeth Whitening",
-      "hairTransplant": "Hair Transplant",
-      "eyeSurgery": "Eye Surgery (LASIK)",
-      "cosmetic": "Cosmetic Surgery",
+      "dentalImplant": "Dental implants",
+      "dentalVeneers": "Veneers",
+      "teethWhitening": "Teeth whitening",
+      "hairTransplant": "Hair transplant",
+      "eyeSurgery": "Eye surgery (LASIK)",
+      "cosmetic": "Cosmetic surgery",
       "other": "Other"
     },
-    "notes": "Additional Information (optional)",
-    "notesPlaceholder": "Tell us about your needs or questions...",
-    "consent": "I agree to the processing of my personal and health data as described in the",
+    "notes": "Additional details (optional)",
+    "notesPlaceholder": "Share your questions or needs...",
+    "consent": "I agree to the processing of my personal and health data under the",
     "consentPrivacy": "Privacy Policy",
-    "consentAnd": "and",
-    "consentTerms": "Terms of Service",
+    "consentAnd": "and the",
+    "consentTerms": "Terms of Use",
     "consentEnd": ".",
-    "submit": "Request Secure Consultation",
-    "submitting": "Sending...",
-    "helper": "A MedDiscover patient coordinator will be in touch with you shortly.",
-    "successTitle": "We Received Your Request",
-    "successMessage": "Thank you for reaching out. Our team will contact you within 24 hours to discuss your options.",
-    "errorConsent": "Please accept the privacy policy to continue.",
+    "submit": "Request secure consultation",
+    "submitting": "Submitting...",
+    "helper": "A MedDiscover coordinator will contact you shortly.",
+    "successTitle": "Request received",
+    "successMessage": "Thanks for your interest. Our team will be in touch soon.",
+    "errorConsent": "Please accept the privacy policy.",
     "errorGeneric": "Something went wrong. Please try again.",
-    "errorConnection": "Connection error. Please check your internet and try again."
+    "errorConnection": "Connection error. Please try again."
   },
-
   "trust": {
-    "title": "Why Choose MedDiscover?",
-    "verified": "Verified Partner Clinics",
-    "gdpr": "Your Data is Protected",
-    "response": "Response Within 24 Hours",
-    "support": "Personal Patient Coordinator"
+    "title": "Why MedDiscover?",
+    "verified": "Vetted partner clinics",
+    "gdpr": "GDPR-ready data handling",
+    "response": "Fast response times",
+    "support": "Multilingual support"
   },
-
   "howItWorks": {
-    "title": "How It Works",
-    "subtitle": "Your path to treatment – transparent and secure",
-    "step1Title": "1. Submit Your Request",
-    "step1Desc": "Fill out the short form. Free and without obligation.",
-    "step2Title": "2. Receive Consultation",
-    "step2Desc": "Within 24 hours, a medical coordinator will contact you.",
-    "step3Title": "3. Choose Your Clinic",
-    "step3Desc": "Get tailored clinic recommendations with transparent information.",
-    "step4Title": "4. Get Your Treatment",
-    "step4Desc": "We organize everything – from travel planning to aftercare."
+    "title": "How MedDiscover works",
+    "subtitle": "A clear path from inquiry to planning",
+    "step1Title": "1. Send your request",
+    "step1Desc": "Fill out the short form. Free and no obligation.",
+    "step2Title": "2. Receive a response",
+    "step2Desc": "A coordinator contacts you with the next steps.",
+    "step3Title": "3. Compare options",
+    "step3Desc": "We share vetted clinic options with transparent details.",
+    "step4Title": "4. Plan the treatment",
+    "step4Desc": "We help with appointment and travel planning."
   },
-
   "verifiedPartners": {
-    "title": "Verified Partner Clinics",
-    "subtitle": "We work exclusively with internationally certified and rigorously vetted medical facilities.",
-    "accreditation": "International Accreditation",
-    "experience": "Years of Experience",
-    "standards": "European Quality Standards",
-    "transparent": "Transparent Pricing"
+    "title": "Verified partner clinics",
+    "subtitle": "We work with carefully vetted, internationally experienced providers.",
+    "accreditation": "International quality standards",
+    "experience": "Experienced specialist teams",
+    "standards": "Clear processes and guidance",
+    "transparent": "Transparent cost overviews"
   },
-
   "faq": {
-    "title": "Frequently Asked Questions",
+    "title": "Frequently asked questions",
     "q1": "Is MedDiscover a hospital?",
-    "a1": "No, MedDiscover is a referral platform. We connect patients with verified international clinics and support the entire process.",
+    "a1": "No. MedDiscover is a consulting and coordination platform connecting you with partner clinics.",
     "q2": "How are clinics selected?",
-    "a2": "All partner clinics undergo a rigorous vetting process. We consider international accreditations, physician experience, and patient satisfaction.",
-    "q3": "What costs do I incur?",
-    "a3": "Consultation and referral through MedDiscover are completely free for you. You only pay for the treatment directly to the clinic.",
-    "q4": "In which countries do you operate?",
-    "a4": "We work with clinics in Turkey, Germany, and other European countries. Depending on the treatment, we recommend the most suitable region.",
+    "a2": "We review qualifications, quality standards, and international patient experience.",
+    "q3": "Are there extra fees for me?",
+    "a3": "MedDiscover consultation is free for patients. Treatment fees are paid directly to the clinic.",
+    "q4": "Which countries do you operate in?",
+    "a4": "We work with partner clinics across multiple countries and recommend options based on your needs.",
     "q5": "How secure is my data?",
-    "a5": "Your data is processed in compliance with GDPR standards and stored encrypted. We only share your information with partner clinics with your explicit consent."
+    "a5": "Your data is processed under GDPR standards and shared only with your consent."
   },
-
+  "leadCta": {
+    "title": "Request a free consultation",
+    "subtitle": "Share your needs and we will get back with suitable options."
+  },
   "footer": {
     "about": "About MedDiscover",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Service",
-    "imprint": "Legal Notice",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "imprint": "Imprint",
     "copyright": "© 2025 MedDiscover"
   }
 }
