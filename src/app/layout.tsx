@@ -4,6 +4,9 @@ import "@/lib/envValidation"; // Validate env on boot
 export const metadata = {
   title: "MedDiscover – Quality Healthcare, Available Worldwide",
   description: "We help you access trusted clinics and guide you through your treatment journey.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

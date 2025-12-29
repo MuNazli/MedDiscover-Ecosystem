@@ -1,0 +1,22 @@
+# M02 Admin Leads - Production Checklist (PASS/FAIL)
+
+1) Auth - ADMIN_PASSPHRASE ile login calisiyor (PASS/FAIL)
+2) Auth - HttpOnly cookie/JWT set ediliyor (PASS/FAIL)
+3) Auth - Kisa TTL uygulanmis (PASS/FAIL)
+4) Guard - /cms/* yetkisiz erisim 401/403 (PASS/FAIL)
+5) Guard - /api/cms/* yetkisiz erisim 401/403 (PASS/FAIL)
+6) Guard - Static asset bypass (favicon, icon, robots, sitemap) dogru (PASS/FAIL)
+7) PII - Lead listesinde email/phone maskeli (PASS/FAIL)
+8) PII - Lead detail yetkili admin icin full data (PASS/FAIL)
+9) Logging - Request body loglanmiyor (PASS/FAIL)
+10) Logging - Error redaction aktif, PII sizintisi yok (PASS/FAIL)
+11) Rate limit - Login endpoint limiti calisiyor (PASS/FAIL)
+12) Rate limit - Notes endpoint limiti calisiyor (PASS/FAIL)
+13) DB - Neon env var seti mevcut ve Prisma baglaniyor (PASS/FAIL)
+14) DB - Env varlar: POSTGRES_URL / POSTGRES_PRISMA_URL / DATABASE_URL uyumlu (PASS/FAIL)
+15) Vercel Logs - Statik asset hatasi yok (favicon 500 / clientModules) (PASS/FAIL)
+
+Phase-2 (ERTELENEBILIR)
+- Audit log (admin islemleri)
+- Export (PII iceren veri disari cikisi)
+- Anonimlestirme / retention politikasi otomasyonu
