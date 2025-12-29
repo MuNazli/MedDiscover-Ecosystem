@@ -34,6 +34,12 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
+  if (pathname === "/en" || pathname.startsWith("/en/")) {
+    const url = request.nextUrl.clone();
+    url.pathname = `/${defaultLocale}`;
+    return NextResponse.redirect(url);
+  }
+
   const localeMatch = pathname.match(/^\/(de|tr)(?=\/|$)/);
   const hasLocale = Boolean(localeMatch);
 

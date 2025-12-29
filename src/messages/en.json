@@ -106,7 +106,9 @@
     "q4": "Which countries do you operate in?",
     "a4": "We work with partner clinics across multiple countries and recommend options based on your needs.",
     "q5": "How secure is my data?",
-    "a5": "Your data is processed under GDPR standards and shared only with your consent."
+    "a5": "Your data is processed under GDPR standards and shared only with your consent.",
+    "q6": "Does MedDiscover provide medical guarantees?",
+    "a6": "No. MedDiscover coordinates the process but does not guarantee treatment outcomes."
   },
   "leadCta": {
     "title": "Request a free consultation",

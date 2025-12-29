@@ -38,7 +38,7 @@
     "languageOptions": {
       "placeholder": "Sprache wählen...",
       "de": "Deutsch",
-      "en": "English",
+      "en": "Englisch",
       "tr": "Türkçe"
     },
     "treatment": "Gewünschte Behandlung",
@@ -106,7 +106,9 @@
     "q4": "In welchen Ländern arbeitet MedDiscover?",
     "a4": "Wir arbeiten mit Partnerkliniken in mehreren Ländern und empfehlen passende Optionen je nach Bedarf.",
     "q5": "Wie sicher sind meine Daten?",
-    "a5": "Ihre Daten werden DSGVO-konform verarbeitet und nur mit Ihrer Zustimmung weitergegeben."
+    "a5": "Ihre Daten werden DSGVO-konform verarbeitet und nur mit Ihrer Zustimmung weitergegeben.",
+    "q6": "Gibt MedDiscover medizinische Garantien?",
+    "a6": "Nein. MedDiscover unterstützt bei der Koordination, trifft jedoch keine Heilungs- oder Erfolgsgarantien."
   },
   "leadCta": {
     "title": "Beratung anfragen",

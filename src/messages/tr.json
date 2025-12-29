@@ -38,7 +38,7 @@
     "languageOptions": {
       "placeholder": "Dil seçin...",
       "de": "Deutsch",
-      "en": "English",
+      "en": "Ingilizce",
       "tr": "Türkçe"
     },
     "treatment": "İlgilendiğiniz tedavi",
@@ -106,7 +106,9 @@
     "q4": "Hangi ülkelerde çalışıyorsunuz?",
     "a4": "Birden fazla ülkedeki partner kliniklerle çalışıyoruz ve ihtiyacınıza uygun seçenekler sunuyoruz.",
     "q5": "Verilerim ne kadar güvenli?",
-    "a5": "Verileriniz KVKK/GDPR standartlarına uygun şekilde işlenir ve yalnızca onayınızla paylaşılır."
+    "a5": "Verileriniz KVKK/GDPR standartlarına uygun şekilde işlenir ve yalnızca onayınızla paylaşılır.",
+    "q6": "MedDiscover tıbbi garanti verir mi?",
+    "a6": "Hayır. MedDiscover süreç koordinasyonu sağlar; tedavi başarısına dair garanti vermez."
   },
   "leadCta": {
     "title": "Danışma talep et",
