@@ -82,6 +82,42 @@
     "support": "Mehrsprachige Betreuung"
   },
 
+  "howItWorks": {
+    "title": "So funktioniert es",
+    "subtitle": "Ihr Weg zur Behandlung – transparent und sicher",
+    "step1Title": "1. Anfrage stellen",
+    "step1Desc": "Füllen Sie das kurze Formular aus. Kostenlos und unverbindlich.",
+    "step2Title": "2. Beratung erhalten",
+    "step2Desc": "Innerhalb von 24 Stunden meldet sich ein medizinischer Koordinator bei Ihnen.",
+    "step3Title": "3. Klinik auswählen",
+    "step3Desc": "Sie erhalten passende Klinikvorschläge mit transparenten Informationen.",
+    "step4Title": "4. Behandlung durchführen",
+    "step4Desc": "Wir organisieren alles – von der Reiseplanung bis zur Nachsorge."
+  },
+
+  "verifiedPartners": {
+    "title": "Verifizierte Partnerkliniken",
+    "subtitle": "Wir arbeiten ausschließlich mit international zertifizierten und geprüften medizinischen Einrichtungen zusammen.",
+    "accreditation": "Internationale Akkreditierung",
+    "experience": "Langjährige Erfahrung",
+    "standards": "Europäische Qualitätsstandards",
+    "transparent": "Transparente Preisgestaltung"
+  },
+
+  "faq": {
+    "title": "Häufig gestellte Fragen",
+    "q1": "Ist MedDiscover ein Krankenhaus?",
+    "a1": "Nein, MedDiscover ist eine Vermittlungsplattform. Wir verbinden Patienten mit geprüften internationalen Kliniken und begleiten den gesamten Prozess.",
+    "q2": "Wie werden die Kliniken ausgewählt?",
+    "a2": "Alle Partnerkliniken durchlaufen einen strengen Prüfprozess. Wir berücksichtigen internationale Akkreditierungen, Erfahrung der Ärzte und Patientenzufriedenheit.",
+    "q3": "Welche Kosten entstehen für mich?",
+    "a3": "Die Beratung und Vermittlung durch MedDiscover sind für Sie kostenlos. Sie zahlen nur für die Behandlung direkt an die Klinik.",
+    "q4": "In welchen Ländern arbeiten Sie?",
+    "a4": "Wir arbeiten mit Kliniken in der Türkei, Deutschland und weiteren europäischen Ländern zusammen. Je nach Behandlung empfehlen wir die passende Region.",
+    "q5": "Wie sicher sind meine Daten?",
+    "a5": "Ihre Daten werden DSGVO-konform verarbeitet und verschlüsselt gespeichert. Wir geben Ihre Informationen nur mit Ihrer ausdrücklichen Zustimmung an Partnerkliniken weiter."
+  },
+
   "footer": {
     "about": "Über MedDiscover",
     "privacy": "Datenschutz",

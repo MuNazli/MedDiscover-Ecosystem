@@ -82,6 +82,42 @@
     "support": "Personal Patient Coordinator"
   },
 
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "Your path to treatment – transparent and secure",
+    "step1Title": "1. Submit Your Request",
+    "step1Desc": "Fill out the short form. Free and without obligation.",
+    "step2Title": "2. Receive Consultation",
+    "step2Desc": "Within 24 hours, a medical coordinator will contact you.",
+    "step3Title": "3. Choose Your Clinic",
+    "step3Desc": "Get tailored clinic recommendations with transparent information.",
+    "step4Title": "4. Get Your Treatment",
+    "step4Desc": "We organize everything – from travel planning to aftercare."
+  },
+
+  "verifiedPartners": {
+    "title": "Verified Partner Clinics",
+    "subtitle": "We work exclusively with internationally certified and rigorously vetted medical facilities.",
+    "accreditation": "International Accreditation",
+    "experience": "Years of Experience",
+    "standards": "European Quality Standards",
+    "transparent": "Transparent Pricing"
+  },
+
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "q1": "Is MedDiscover a hospital?",
+    "a1": "No, MedDiscover is a referral platform. We connect patients with verified international clinics and support the entire process.",
+    "q2": "How are clinics selected?",
+    "a2": "All partner clinics undergo a rigorous vetting process. We consider international accreditations, physician experience, and patient satisfaction.",
+    "q3": "What costs do I incur?",
+    "a3": "Consultation and referral through MedDiscover are completely free for you. You only pay for the treatment directly to the clinic.",
+    "q4": "In which countries do you operate?",
+    "a4": "We work with clinics in Turkey, Germany, and other European countries. Depending on the treatment, we recommend the most suitable region.",
+    "q5": "How secure is my data?",
+    "a5": "Your data is processed in compliance with GDPR standards and stored encrypted. We only share your information with partner clinics with your explicit consent."
+  },
+
   "footer": {
     "about": "About MedDiscover",
     "privacy": "Privacy Policy",

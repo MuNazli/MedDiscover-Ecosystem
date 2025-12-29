@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import { AdminSettings, DEFAULT_ADMIN_SETTINGS } from "@/lib/adminSettingsDefaults";
@@ -11,7 +11,6 @@ interface PublicFooterProps {
 
 const footerLabels: Record<Locale, { impressum: string; privacy: string; terms: string }> = {
   de: { impressum: "Impressum", privacy: "Datenschutz", terms: "AGB" },
-  en: { impressum: "Impressum", privacy: "Privacy", terms: "Terms" },
   tr: { impressum: "Impressum", privacy: "Gizlilik", terms: "Kosullar" },
 };
 

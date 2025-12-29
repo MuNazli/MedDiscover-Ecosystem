@@ -82,6 +82,42 @@
     "support": "Kişisel Hasta Danışmanı"
   },
 
+  "howItWorks": {
+    "title": "Nasıl Çalışır?",
+    "subtitle": "Tedaviye giden yolunuz – şeffaf ve güvenli",
+    "step1Title": "1. Başvuru Yapın",
+    "step1Desc": "Kısa formu doldurun. Ücretsiz ve taahhütsüz.",
+    "step2Title": "2. Danışmanlık Alın",
+    "step2Desc": "24 saat içinde bir hasta danışmanı sizinle iletişime geçer.",
+    "step3Title": "3. Klinik Seçin",
+    "step3Desc": "Size uygun klinik önerileri ve şeffaf bilgilerle karşılaştırma yapın.",
+    "step4Title": "4. Tedavi Olun",
+    "step4Desc": "Seyahat planlamasından takibe kadar her şeyi organize ediyoruz."
+  },
+
+  "verifiedPartners": {
+    "title": "Doğrulanmış Partner Klinikler",
+    "subtitle": "Sadece uluslararası sertifikalara sahip, titizlikle seçilmiş tıbbi kurumlarla çalışıyoruz.",
+    "accreditation": "Uluslararası Akreditasyon",
+    "experience": "Uzun Yıllara Dayanan Deneyim",
+    "standards": "Avrupa Kalite Standartları",
+    "transparent": "Şeffaf Fiyatlandırma"
+  },
+
+  "faq": {
+    "title": "Sıkça Sorulan Sorular",
+    "q1": "MedDiscover bir hastane mi?",
+    "a1": "Hayır, MedDiscover bir aracı platformdur. Hastaları onaylı uluslararası kliniklerle buluşturur ve tüm süreci yönetiriz.",
+    "q2": "Klinikler nasıl seçiliyor?",
+    "a2": "Tüm partner klinikler katı bir değerlendirme sürecinden geçer. Uluslararası akreditasyonları, doktor deneyimini ve hasta memnuniyetini dikkate alıyoruz.",
+    "q3": "Benim için ne kadar ücret var?",
+    "a3": "MedDiscover'ın danışmanlık ve aracılık hizmeti sizin için tamamen ücretsizdir. Sadece tedavi ücretini doğrudan kliniğe ödersiniz.",
+    "q4": "Hangi ülkelerde çalışıyorsunuz?",
+    "a4": "Türkiye, Almanya ve diğer Avrupa ülkelerindeki kliniklerle çalışıyoruz. Tedaviye göre size en uygun bölgeyi öneriyoruz.",
+    "q5": "Verilerim ne kadar güvenli?",
+    "a5": "Verileriniz GDPR standartlarına uygun şekilde işlenir ve şifreli olarak saklanır. Bilgilerinizi yalnızca açık onayınızla partner kliniklere iletiriz."
+  },
+
   "footer": {
     "about": "MedDiscover Hakkında",
     "privacy": "Gizlilik Politikası",

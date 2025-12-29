@@ -6,6 +6,10 @@ import { DEFAULT_ADMIN_SETTINGS } from "@/lib/adminSettingsDefaults";
 import { resolveSeoForLocale } from "@/lib/seoSettings";
 import TrustStatsStrip from "@/components/TrustStatsStrip";
 import FeaturedClinicsSection from "@/components/FeaturedClinicsSection";
+import HowItWorksSection from "@/components/HowItWorksSection";
+import VerifiedPartnersSection from "@/components/VerifiedPartnersSection";
+import FAQSection from "@/components/FAQSection";
+import FAQSchema from "@/components/FAQSchema";
 import PublicFooter from "@/components/PublicFooter";
 
 interface PageProps {
@@ -55,16 +59,22 @@ export default function LocaleHomePage({ params }: PageProps) {
   const messages = getMessages(locale);
 
   return (
-    <main className="bg-hospital">
-      <HeroGlass
-        locale={locale}
-        messages={messages}
-        featuredClinic={PLACEHOLDER_FEATURED_CLINIC}
-      />
-      <TrustStatsStrip locale={locale} />
-      <FeaturedClinicsSection locale={locale} />
-      <PublicFooter locale={locale} />
-    </main>
+    <>
+      <FAQSchema locale={locale} />
+      <main className="bg-hospital">
+        <HeroGlass
+          locale={locale}
+          messages={messages}
+          featuredClinic={PLACEHOLDER_FEATURED_CLINIC}
+        />
+        <TrustStatsStrip locale={locale} />
+        <HowItWorksSection />
+        <VerifiedPartnersSection />
+        <FeaturedClinicsSection locale={locale} />
+        <FAQSection />
+        <PublicFooter locale={locale} />
+      </main>
+    </>
   );
 }
 

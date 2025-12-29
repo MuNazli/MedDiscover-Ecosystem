@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Locale, locales, Messages } from "@/lib/i18n";
 
@@ -19,10 +19,10 @@ export default function Navbar({ locale, messages }: NavbarProps) {
         </a>
 
         <div className="navbar-menu">
-          <a href={`/${locale}#treatments`} className="navbar-link">{nav.treatments}</a>
-          <a href={`/${locale}#clinics`} className="navbar-link">{nav.clinics}</a>
-          <a href={`/${locale}#flights`} className="navbar-link">{nav.flights}</a>
-          <a href={`/${locale}#contact`} className="navbar-link">{nav.contact}</a>
+          <a href={`/${locale}#steps`} className="navbar-link">{nav.steps}</a>
+          <a href={`/${locale}#verified`} className="navbar-link">{nav.verified}</a>
+          <a href={`/${locale}#faq`} className="navbar-link">{nav.faq}</a>
+          <a href={`/${locale}#lead`} className="navbar-link">{nav.leadCta}</a>
         </div>
 
         <div className="navbar-actions">
@@ -38,7 +38,7 @@ export default function Navbar({ locale, messages }: NavbarProps) {
               <option key={l} value={l.toUpperCase()}>{l.toUpperCase()}</option>
             ))}
           </select>
-          <a href={`/${locale}/apply`} className="btn-outline">{nav.getStarted}</a>
+          <a href={`/${locale}#lead`} className="btn-outline">{nav.getStarted}</a>
         </div>
       </div>
     </nav>

@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 
-const locales = ["de", "en", "tr"] as const;
+const locales = ["de", "tr"] as const;
 const defaultLocale = "de";
 
 export function middleware(request: NextRequest) {
@@ -21,10 +21,10 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(loginUrl);
   }
 
-  const localeCmsMatch = pathname.match(/^\/(de|en|tr)\/(cms|admin)(?=\/|$)/);
+  const localeCmsMatch = pathname.match(/^\/(de|tr)\/(cms|admin)(?=\/|$)/);
   if (localeCmsMatch) {
     const url = request.nextUrl.clone();
-    url.pathname = pathname.replace(/^\/(de|en|tr)\//, "/");
+    url.pathname = pathname.replace(/^\/(de|tr)\//, "/");
     return NextResponse.redirect(url, 308);
   }
 
@@ -34,7 +34,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  const localeMatch = pathname.match(/^\/(de|en|tr)(?=\/|$)/);
+  const localeMatch = pathname.match(/^\/(de|tr)(?=\/|$)/);
   const hasLocale = Boolean(localeMatch);
 
   if (!hasLocale) {
@@ -43,7 +43,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  let pathWithoutLocale = pathname.replace(/^\/(de|en|tr)(?=\/|$)/, "");
+  let pathWithoutLocale = pathname.replace(/^\/(de|tr)(?=\/|$)/, "");
   if (pathWithoutLocale === "") {
     pathWithoutLocale = "/";
   }
