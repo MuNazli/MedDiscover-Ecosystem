@@ -112,6 +112,44 @@ export default function LeadDetailClient({ leadId, leadData }: LeadDetailClientP
     }
   };
 
+  const parseStatusFromMeta = (meta?: string) => {
+    if (!meta) return null;
+    try {
+      const parsed = JSON.parse(meta) as { status?: string };
+      return parsed.status || null;
+    } catch {
+      return null;
+    }
+  };
+
+  const auditEvents = [
+    {
+      id: "lead-created",
+      label: "LEAD_CREATED",
+      createdAt: leadData.createdAt,
+      payload: "source: lead record",
+    },
+    ...timeline
+      .filter((item) => item.type === "status" || item.type === "note")
+      .map((item) => {
+        if (item.type === "note") {
+          return {
+            id: item.id,
+            label: "NOTE_ADDED",
+            createdAt: item.createdAt,
+            payload: `actor: ${item.author || "admin"}`,
+          };
+        }
+        const status = parseStatusFromMeta(item.meta);
+        return {
+          id: item.id,
+          label: "STATUS_CHANGED",
+          createdAt: item.createdAt,
+          payload: status ? `status: ${status}` : "status updated",
+        };
+      }),
+  ].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+
   return (
     <div style={{ maxWidth: 900, margin: "0 auto", padding: 32 }}>
       {/* Header */}
@@ -278,33 +316,32 @@ export default function LeadDetailClient({ leadId, leadData }: LeadDetailClientP
         </div>
       )}
 
-      {/* Timeline */}
+      {/* Audit Log */}
       <div style={{ 
         background: "white", 
         border: "1px solid #e5e7eb", 
         borderRadius: 8, 
         padding: 24 
       }}>
-        <h2 style={{ fontSize: 18, fontWeight: 600, marginBottom: 16 }}>Timeline</h2>
+        <h2 style={{ fontSize: 18, fontWeight: 600, marginBottom: 16 }}>Audit Log</h2>
         
         {loadingTimeline && (
-          <p style={{ fontSize: 14, color: "#6b7280" }}>Loading timeline...</p>
+          <p style={{ fontSize: 14, color: "#6b7280" }}>Loading audit log...</p>
         )}
 
-        {!loadingTimeline && timeline.length === 0 && (
-          <p style={{ fontSize: 14, color: "#6b7280" }}>No timeline entries yet.</p>
+        {!loadingTimeline && auditEvents.length === 0 && (
+          <p style={{ fontSize: 14, color: "#6b7280" }}>No audit entries yet.</p>
         )}
 
-        {!loadingTimeline && timeline.length > 0 && (
+        {!loadingTimeline && auditEvents.length > 0 && (
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            {timeline.map((item) => (
+            {auditEvents.map((item) => (
               <div
                 key={item.id}
                 style={{
                   padding: 16,
-                  background: item.type === "note" ? "#f9fafb" : "#fef3c7",
-                  border: "1px solid",
-                  borderColor: item.type === "note" ? "#e5e7eb" : "#fde68a",
+                  background: "#fef3c7",
+                  border: "1px solid #fde68a",
                   borderRadius: 6,
                 }}
               >
@@ -312,30 +349,18 @@ export default function LeadDetailClient({ leadId, leadData }: LeadDetailClientP
                   <span style={{
                     fontSize: 12,
                     fontWeight: 600,
-                    color: item.type === "note" ? "#2563eb" : "#d97706",
+                    color: "#d97706",
                     textTransform: "uppercase",
                   }}>
-                    {item.type}
+                    {item.label}
                   </span>
                   <span style={{ fontSize: 12, color: "#6b7280" }}>
                     {new Date(item.createdAt).toLocaleString("en-US")}
                   </span>
                 </div>
 
-                {item.content && (
-                  <p style={{ fontSize: 14, margin: "8px 0", whiteSpace: "pre-wrap" }}>
-                    {item.content}
-                  </p>
-                )}
-
-                {item.action && (
-                  <p style={{ fontSize: 14, margin: "8px 0", fontWeight: 500 }}>
-                    {item.action}
-                  </p>
-                )}
-
-                <p style={{ fontSize: 12, color: "#6b7280", marginTop: 8 }}>
-                  By: {item.author || "system"}
+                <p style={{ fontSize: 14, margin: "8px 0", fontWeight: 500 }}>
+                  {item.payload}
                 </p>
               </div>
             ))}
@@ -343,10 +368,6 @@ export default function LeadDetailClient({ leadId, leadData }: LeadDetailClientP
         )}
       </div>
 
-      {/* TODO: Phase 2 Features */}
-      {/* TODO: Add lead assignment functionality */}
-      {/* TODO: Add lead flagging/priority system */}
-      {/* TODO: Add lead archiving capability */}
     </div>
   );
 }
