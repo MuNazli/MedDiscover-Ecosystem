@@ -9,6 +9,11 @@ const LeadDetailResponseSchema = z.object({
   lead: z.any(),
 });
 
+const ErrorResponseSchema = z.object({
+  code: z.string(),
+  message: z.string(),
+});
+
 interface RouteParams {
   params: { id: string };
 }
@@ -32,13 +37,19 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
   try {
     const lead = await getLeadDetail(params.id);
     if (!lead) {
-      return NextResponse.json({ error: "Not found" }, { status: 404 });
+      return NextResponse.json(
+        ErrorResponseSchema.parse({ code: "LEAD_NOT_FOUND", message: "Lead not found" }),
+        { status: 404 }
+      );
     }
 
     logAdminAction("VIEW_LEAD", params.id);
     return NextResponse.json(LeadDetailResponseSchema.parse({ lead }), { status: 200 });
   } catch (error) {
     logError("VIEW_LEAD_ERROR", error, { leadId: params.id });
-    return NextResponse.json({ error: "Failed to get lead" }, { status: 500 });
+    return NextResponse.json(
+      ErrorResponseSchema.parse({ code: "VIEW_LEAD_FAILED", message: "Failed to get lead" }),
+      { status: 500 }
+    );
   }
 }

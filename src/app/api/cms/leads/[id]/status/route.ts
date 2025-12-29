@@ -15,6 +15,11 @@ const StatusUpdateResponseSchema = z.object({
   lead: z.any(),
 });
 
+const ErrorResponseSchema = z.object({
+  code: z.string(),
+  message: z.string(),
+});
+
 interface RouteParams {
   params: { id: string };
 }
@@ -39,12 +44,18 @@ export async function PATCH(request: NextRequest, { params }: RouteParams) {
     const body = await request.json().catch(() => null);
     const parsed = StatusSchema.safeParse(body);
     if (!parsed.success) {
-      return NextResponse.json({ error: "Invalid status" }, { status: 400 });
+      return NextResponse.json(
+        ErrorResponseSchema.parse({ code: "INVALID_STATUS", message: "Invalid status value" }),
+        { status: 400 }
+      );
     }
 
     const existing = await prisma.lead.findUnique({ where: { id: params.id } });
     if (!existing) {
-      return NextResponse.json({ error: "Not found" }, { status: 404 });
+      return NextResponse.json(
+        ErrorResponseSchema.parse({ code: "LEAD_NOT_FOUND", message: "Lead not found" }),
+        { status: 404 }
+      );
     }
 
     const lead = await updateLeadStatus(params.id, parsed.data.status);
@@ -52,6 +63,9 @@ export async function PATCH(request: NextRequest, { params }: RouteParams) {
     return NextResponse.json(StatusUpdateResponseSchema.parse({ lead }), { status: 200 });
   } catch (error) {
     logError("UPDATE_STATUS_ERROR", error, { leadId: params.id });
-    return NextResponse.json({ error: "Failed to update status" }, { status: 500 });
+    return NextResponse.json(
+      ErrorResponseSchema.parse({ code: "UPDATE_STATUS_FAILED", message: "Failed to update status" }),
+      { status: 500 }
+    );
   }
 }

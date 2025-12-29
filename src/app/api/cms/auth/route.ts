@@ -11,6 +11,11 @@ const LoginResponseSchema = z.object({
   ok: z.boolean(),
 });
 
+const ErrorResponseSchema = z.object({
+  code: z.string(),
+  message: z.string(),
+});
+
 export async function POST(request: NextRequest) {
   // Rate limiting - stricter for auth attempts
   const rateLimitResponse = rateLimit(request, RATE_LIMITS.ADMIN_AUTH);
@@ -26,7 +31,7 @@ export async function POST(request: NextRequest) {
     if (!parsed.success) {
       logSecurityEvent("AUTH_INVALID_INPUT");
       return NextResponse.json(
-        { error: "Invalid request" },
+        ErrorResponseSchema.parse({ code: "INVALID_REQUEST", message: "Invalid request format" }),
         { status: 400 }
       );
     }
@@ -36,7 +41,7 @@ export async function POST(request: NextRequest) {
 
     if (!expectedKey) {
       return NextResponse.json(
-        { error: "Admin key not configured" },
+        ErrorResponseSchema.parse({ code: "CONFIG_ERROR", message: "Admin key not configured" }),
         { status: 500 }
       );
     }
@@ -44,7 +49,7 @@ export async function POST(request: NextRequest) {
     if (key !== expectedKey) {
       logSecurityEvent("AUTH_FAILED");
       return NextResponse.json(
-        { error: "Invalid admin key" },
+        ErrorResponseSchema.parse({ code: "UNAUTHORIZED", message: "Invalid admin key" }),
         { status: 401 }
       );
     }
@@ -63,7 +68,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     logError("AUTH_ERROR", error);
     return NextResponse.json(
-      { error: "Invalid request" },
+      ErrorResponseSchema.parse({ code: "AUTH_ERROR", message: "Authentication failed" }),
       { status: 400 }
     );
   }

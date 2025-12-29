@@ -14,6 +14,11 @@ const NoteResponseSchema = z.object({
   lead: z.any(),
 });
 
+const ErrorResponseSchema = z.object({
+  code: z.string(),
+  message: z.string(),
+});
+
 interface RouteParams {
   params: { id: string };
 }
@@ -38,12 +43,18 @@ export async function POST(request: NextRequest, { params }: RouteParams) {
     const body = await request.json().catch(() => null);
     const parsed = NoteSchema.safeParse(body);
     if (!parsed.success) {
-      return NextResponse.json({ error: "Invalid note" }, { status: 400 });
+      return NextResponse.json(
+        ErrorResponseSchema.parse({ code: "INVALID_NOTE", message: "Invalid note content" }),
+        { status: 400 }
+      );
     }
 
     const existing = await prisma.lead.findUnique({ where: { id: params.id } });
     if (!existing) {
-      return NextResponse.json({ error: "Not found" }, { status: 404 });
+      return NextResponse.json(
+        ErrorResponseSchema.parse({ code: "LEAD_NOT_FOUND", message: "Lead not found" }),
+        { status: 404 }
+      );
     }
 
     await addLeadNote(params.id, parsed.data.content.trim());
@@ -52,6 +63,9 @@ export async function POST(request: NextRequest, { params }: RouteParams) {
     return NextResponse.json(NoteResponseSchema.parse({ lead }), { status: 200 });
   } catch (error) {
     logError("ADD_NOTE_ERROR", error, { leadId: params.id });
-    return NextResponse.json({ error: "Failed to add note" }, { status: 500 });
+    return NextResponse.json(
+      ErrorResponseSchema.parse({ code: "ADD_NOTE_FAILED", message: "Failed to add note" }),
+      { status: 500 }
+    );
   }
 }
