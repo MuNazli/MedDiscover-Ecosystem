@@ -4,6 +4,7 @@ import { requireAdmin } from "@/lib/cmsAuth";
 import { updateLeadStatus } from "@/lib/cmsLeads";
 import { LEAD_STATUSES } from "@/lib/leadStatus";
 import { prisma } from "@/lib/prisma";
+import { rateLimit } from "@/lib/rateLimit";
 
 const StatusSchema = z.object({
   status: z.enum(LEAD_STATUSES),
@@ -14,6 +15,16 @@ interface RouteParams {
 }
 
 export async function PATCH(request: NextRequest, { params }: RouteParams) {
+  // Rate limiting
+  const rateLimitError = rateLimit(request, {
+    maxRequests: 20,
+    windowMs: 60 * 1000, // 20 updates per minute
+  });
+  if (rateLimitError) {
+    return rateLimitError;
+  }
+
+  // Auth check
   const authError = requireAdmin(request);
   if (authError) {
     return authError;

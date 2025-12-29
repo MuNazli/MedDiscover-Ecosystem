@@ -3,6 +3,7 @@ import { z } from "zod";
 import { requireAdmin } from "@/lib/cmsAuth";
 import { addLeadNote, getLeadDetail } from "@/lib/cmsLeads";
 import { prisma } from "@/lib/prisma";
+import { rateLimit } from "@/lib/rateLimit";
 
 const NoteSchema = z.object({
   content: z.string().min(2).max(2000),
@@ -13,6 +14,16 @@ interface RouteParams {
 }
 
 export async function POST(request: NextRequest, { params }: RouteParams) {
+  // Rate limiting
+  const rateLimitError = rateLimit(request, {
+    maxRequests: 15,
+    windowMs: 60 * 1000, // 15 notes per minute
+  });
+  if (rateLimitError) {
+    return rateLimitError;
+  }
+
+  // Auth check
   const authError = requireAdmin(request);
   if (authError) {
     return authError;
