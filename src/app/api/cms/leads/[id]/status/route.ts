@@ -5,9 +5,14 @@ import { updateLeadStatus } from "@/lib/cmsLeads";
 import { LEAD_STATUSES } from "@/lib/leadStatus";
 import { prisma } from "@/lib/prisma";
 import { rateLimit } from "@/lib/rateLimit";
+import { logAdminAction, logError } from "@/lib/securityLogger";
 
 const StatusSchema = z.object({
   status: z.enum(LEAD_STATUSES),
+});
+
+const StatusUpdateResponseSchema = z.object({
+  lead: z.any(),
 });
 
 interface RouteParams {
@@ -30,17 +35,23 @@ export async function PATCH(request: NextRequest, { params }: RouteParams) {
     return authError;
   }
 
-  const body = await request.json().catch(() => null);
-  const parsed = StatusSchema.safeParse(body);
-  if (!parsed.success) {
-    return NextResponse.json({ error: "Invalid status" }, { status: 400 });
-  }
+  try {
+    const body = await request.json().catch(() => null);
+    const parsed = StatusSchema.safeParse(body);
+    if (!parsed.success) {
+      return NextResponse.json({ error: "Invalid status" }, { status: 400 });
+    }
 
-  const existing = await prisma.lead.findUnique({ where: { id: params.id } });
-  if (!existing) {
-    return NextResponse.json({ error: "Not found" }, { status: 404 });
-  }
+    const existing = await prisma.lead.findUnique({ where: { id: params.id } });
+    if (!existing) {
+      return NextResponse.json({ error: "Not found" }, { status: 404 });
+    }
 
-  const lead = await updateLeadStatus(params.id, parsed.data.status);
-  return NextResponse.json({ lead }, { status: 200 });
+    const lead = await updateLeadStatus(params.id, parsed.data.status);
+    logAdminAction("UPDATE_STATUS", params.id, { status: parsed.data.status });
+    return NextResponse.json(StatusUpdateResponseSchema.parse({ lead }), { status: 200 });
+  } catch (error) {
+    logError("UPDATE_STATUS_ERROR", error, { leadId: params.id });
+    return NextResponse.json({ error: "Failed to update status" }, { status: 500 });
+  }
 }

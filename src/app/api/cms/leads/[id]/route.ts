@@ -1,7 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
 import { requireAdmin } from "@/lib/cmsAuth";
 import { getLeadDetail } from "@/lib/cmsLeads";
 import { rateLimit } from "@/lib/rateLimit";
+import { logAdminAction, logError } from "@/lib/securityLogger";
+
+const LeadDetailResponseSchema = z.object({
+  lead: z.any(),
+});
 
 interface RouteParams {
   params: { id: string };
@@ -23,10 +29,16 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
     return authError;
   }
 
-  const lead = await getLeadDetail(params.id);
-  if (!lead) {
-    return NextResponse.json({ error: "Not found" }, { status: 404 });
-  }
+  try {
+    const lead = await getLeadDetail(params.id);
+    if (!lead) {
+      return NextResponse.json({ error: "Not found" }, { status: 404 });
+    }
 
-  return NextResponse.json({ lead }, { status: 200 });
+    logAdminAction("VIEW_LEAD", params.id);
+    return NextResponse.json(LeadDetailResponseSchema.parse({ lead }), { status: 200 });
+  } catch (error) {
+    logError("VIEW_LEAD_ERROR", error, { leadId: params.id });
+    return NextResponse.json({ error: "Failed to get lead" }, { status: 500 });
+  }
 }

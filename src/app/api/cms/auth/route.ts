@@ -1,15 +1,37 @@
 import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
 import { rateLimit, RATE_LIMITS } from "@/lib/rateLimit";
+import { logSecurityEvent, logError } from "@/lib/securityLogger";
+
+const LoginSchema = z.object({
+  key: z.string().min(1),
+});
+
+const LoginResponseSchema = z.object({
+  ok: z.boolean(),
+});
 
 export async function POST(request: NextRequest) {
   // Rate limiting - stricter for auth attempts
   const rateLimitResponse = rateLimit(request, RATE_LIMITS.ADMIN_AUTH);
   if (rateLimitResponse) {
+    logSecurityEvent("AUTH_RATE_LIMITED");
     return rateLimitResponse;
   }
 
   try {
-    const { key } = await request.json();
+    const body = await request.json().catch(() => null);
+    const parsed = LoginSchema.safeParse(body);
+    
+    if (!parsed.success) {
+      logSecurityEvent("AUTH_INVALID_INPUT");
+      return NextResponse.json(
+        { error: "Invalid request" },
+        { status: 400 }
+      );
+    }
+
+    const { key } = parsed.data;
     const expectedKey = process.env.ADMIN_PASSPHRASE;
 
     if (!expectedKey) {
@@ -20,13 +42,15 @@ export async function POST(request: NextRequest) {
     }
 
     if (key !== expectedKey) {
+      logSecurityEvent("AUTH_FAILED");
       return NextResponse.json(
         { error: "Invalid admin key" },
         { status: 401 }
       );
     }
 
-    const response = NextResponse.json({ ok: true });
+    logSecurityEvent("AUTH_SUCCESS");
+    const response = NextResponse.json(LoginResponseSchema.parse({ ok: true }));
     response.cookies.set("md_admin", "1", {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
@@ -36,7 +60,8 @@ export async function POST(request: NextRequest) {
     });
 
     return response;
-  } catch {
+  } catch (error) {
+    logError("AUTH_ERROR", error);
     return NextResponse.json(
       { error: "Invalid request" },
       { status: 400 }

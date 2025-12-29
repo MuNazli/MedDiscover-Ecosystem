@@ -4,9 +4,14 @@ import { requireAdmin } from "@/lib/cmsAuth";
 import { addLeadNote, getLeadDetail } from "@/lib/cmsLeads";
 import { prisma } from "@/lib/prisma";
 import { rateLimit } from "@/lib/rateLimit";
+import { logAdminAction, logError } from "@/lib/securityLogger";
 
 const NoteSchema = z.object({
   content: z.string().min(2).max(2000),
+});
+
+const NoteResponseSchema = z.object({
+  lead: z.any(),
 });
 
 interface RouteParams {
@@ -29,18 +34,24 @@ export async function POST(request: NextRequest, { params }: RouteParams) {
     return authError;
   }
 
-  const body = await request.json().catch(() => null);
-  const parsed = NoteSchema.safeParse(body);
-  if (!parsed.success) {
-    return NextResponse.json({ error: "Invalid note" }, { status: 400 });
-  }
+  try {
+    const body = await request.json().catch(() => null);
+    const parsed = NoteSchema.safeParse(body);
+    if (!parsed.success) {
+      return NextResponse.json({ error: "Invalid note" }, { status: 400 });
+    }
 
-  const existing = await prisma.lead.findUnique({ where: { id: params.id } });
-  if (!existing) {
-    return NextResponse.json({ error: "Not found" }, { status: 404 });
-  }
+    const existing = await prisma.lead.findUnique({ where: { id: params.id } });
+    if (!existing) {
+      return NextResponse.json({ error: "Not found" }, { status: 404 });
+    }
 
-  await addLeadNote(params.id, parsed.data.content.trim());
-  const lead = await getLeadDetail(params.id);
-  return NextResponse.json({ lead }, { status: 200 });
+    await addLeadNote(params.id, parsed.data.content.trim());
+    const lead = await getLeadDetail(params.id);
+    logAdminAction("ADD_NOTE", params.id, { noteLength: parsed.data.content.length });
+    return NextResponse.json(NoteResponseSchema.parse({ lead }), { status: 200 });
+  } catch (error) {
+    logError("ADD_NOTE_ERROR", error, { leadId: params.id });
+    return NextResponse.json({ error: "Failed to add note" }, { status: 500 });
+  }
 }

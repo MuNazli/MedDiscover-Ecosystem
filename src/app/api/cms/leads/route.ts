@@ -1,7 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
 import { requireAdmin } from "@/lib/cmsAuth";
 import { listLeadsForCms } from "@/lib/cmsLeads";
 import { rateLimit } from "@/lib/rateLimit";
+import { logAdminAction, logError } from "@/lib/securityLogger";
+
+const LeadListResponseSchema = z.object({
+  leads: z.array(z.any()),
+});
 
 export async function GET(request: NextRequest) {
   // Rate limiting
@@ -19,6 +25,12 @@ export async function GET(request: NextRequest) {
     return authError;
   }
 
-  const leads = await listLeadsForCms();
-  return NextResponse.json({ leads }, { status: 200 });
+  try {
+    const leads = await listLeadsForCms();
+    logAdminAction("LIST_LEADS", undefined, { count: leads.length });
+    return NextResponse.json(LeadListResponseSchema.parse({ leads }), { status: 200 });
+  } catch (error) {
+    logError("LIST_LEADS_ERROR", error);
+    return NextResponse.json({ error: "Failed to list leads" }, { status: 500 });
+  }
 }
