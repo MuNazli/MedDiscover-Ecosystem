@@ -18,6 +18,7 @@ export function generateStaticParams() {
 }
 
 export const dynamicParams = false;
+export const dynamic = "force-static";
 
 export function generateMetadata({ params }: PageProps) {
   const locale = params.locale as Locale;
