@@ -17,6 +17,8 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
+export const dynamicParams = false;
+
 export function generateMetadata({ params }: PageProps) {
   const locale = params.locale as Locale;
   const messages = getMessages(locale);
