@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useParams } from "next/navigation";
 import { CmsUiKey, t } from "@/lib/cmsI18n";
 import { useCmsUiLocale } from "@/lib/useCmsUiLocale";
-import { LEAD_STATUSES, LeadStatus } from "@/lib/leadStatus";
+import { isLeadStatus, LEAD_STATUSES, LeadStatus } from "@/lib/leadStatus";
 import { maskEmail, maskName, maskPhone } from "@/lib/leadMask";
 
 type LeadNote = {
@@ -19,6 +19,7 @@ type LeadAudit = {
   action: string;
   createdAt: string;
   actor?: string | null;
+  meta?: string | null;
 };
 
 type LeadDetail = {
@@ -56,9 +57,70 @@ export default function CmsLeadDetailPage() {
   const [overrideReason, setOverrideReason] = useState<string>("");
   const [savingOverride, setSavingOverride] = useState(false);
   const [recalculating, setRecalculating] = useState(false);
+  const [auditFilter, setAuditFilter] = useState<"all" | "status" | "notes">("all");
+  const [visibleAudits, setVisibleAudits] = useState(6);
 
   const getStatusLabel = (status: LeadStatus) =>
     t(uiLocale, `leadStatus.${status}` as CmsUiKey);
+
+  const parseAuditStatus = (meta?: string | null) => {
+    if (!meta) return null;
+    try {
+      const parsed = JSON.parse(meta) as { status?: string };
+      return parsed.status && isLeadStatus(parsed.status) ? parsed.status : null;
+    } catch {
+      return null;
+    }
+  };
+
+  const getAuditLabel = (action: string) => {
+    const key = `leadAudit.${action}` as CmsUiKey;
+    return t(uiLocale, key) || action;
+  };
+
+  const auditEvents = useMemo(() => {
+    if (!lead) return [];
+    const baseEvents = lead.audits.map((audit) => ({
+      id: audit.id,
+      action: audit.action,
+      createdAt: audit.createdAt,
+      actor: audit.actor || "system",
+      meta: audit.meta ?? null,
+      kind:
+        audit.action === "STATUS_CHANGED"
+          ? "status"
+          : audit.action === "NOTE_ADDED"
+            ? "note"
+            : "audit",
+    }));
+
+    baseEvents.push({
+      id: `lead-created-${lead.id}`,
+      action: "LEAD_CREATED",
+      createdAt: lead.createdAt,
+      actor: "system",
+      meta: null,
+      kind: "audit",
+    });
+
+    return baseEvents.sort(
+      (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    );
+  }, [lead]);
+
+  const filteredAudits = useMemo(() => {
+    if (auditFilter === "status") {
+      return auditEvents.filter((event) => event.kind === "status");
+    }
+    if (auditFilter === "notes") {
+      return auditEvents.filter((event) => event.kind === "note");
+    }
+    return auditEvents;
+  }, [auditEvents, auditFilter]);
+
+  useEffect(() => {
+    setVisibleAudits(6);
+  }, [auditFilter, lead?.id]);
 
   useEffect(() => {
     if (!leadId) return;
@@ -466,27 +528,81 @@ export default function CmsLeadDetailPage() {
         </div>
 
         <div className="mt-6 rounded-xl border border-black/10 bg-white p-4">
-          <div className="text-[12px] uppercase tracking-wide text-black/50">{t(uiLocale, "leads.auditTitle")}</div>
+          <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+            <div className="text-[12px] uppercase tracking-wide text-black/50">
+              {t(uiLocale, "leads.auditTitle")}
+            </div>
+            <div className="flex items-center gap-2 text-[11px]">
+              {[
+                { id: "all", label: t(uiLocale, "leads.auditFilterAll") },
+                { id: "status", label: t(uiLocale, "leads.auditFilterStatus") },
+                { id: "notes", label: t(uiLocale, "leads.auditFilterNotes") },
+              ].map((option) => (
+                <button
+                  key={option.id}
+                  type="button"
+                  onClick={() => setAuditFilter(option.id as "all" | "status" | "notes")}
+                  className={`rounded-full border px-3 py-1 ${
+                    auditFilter === option.id
+                      ? "border-black bg-black text-white"
+                      : "border-black/20 text-black/60 hover:bg-black/5"
+                  }`}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="mt-3 space-y-2">
-            {lead.audits.length === 0 && (
+            {filteredAudits.length === 0 && (
               <div className="rounded-lg border border-black/10 bg-black/5 p-3 text-[12px] text-black/60">
                 {t(uiLocale, "leads.auditNone")}
               </div>
             )}
-            {lead.audits.map((audit) => {
-              const labelKey = `leadAudit.${audit.action}` as CmsUiKey;
-              const label = t(uiLocale, labelKey);
+
+            {filteredAudits.slice(0, visibleAudits).map((audit) => {
+              const status = audit.action === "STATUS_CHANGED" ? parseAuditStatus(audit.meta) : null;
+              const details = status
+                ? `${t(uiLocale, "leads.statusLabel")}: ${getStatusLabel(status)}`
+                : null;
+
               return (
-                <div
-                  key={audit.id}
-                  className="flex items-center justify-between rounded-lg border border-black/10 px-3 py-2 text-[12px] text-black/70"
-                >
-                  <span>{label}</span>
-                  <span>{new Date(audit.createdAt).toLocaleString()}</span>
+                <div key={audit.id} className="rounded-lg border border-black/10 p-3">
+                  <div className="flex items-center justify-between text-[12px] text-black">
+                    <span className="font-semibold">{getAuditLabel(audit.action)}</span>
+                    <span className="text-[11px] text-black/50">
+                      {new Date(audit.createdAt).toLocaleString()}
+                    </span>
+                  </div>
+                  <div className="mt-2 space-y-1 text-[11px] text-black/60">
+                    <div className="flex items-center justify-between">
+                      <span>{t(uiLocale, "leadAudit.eventBy")}</span>
+                      <span>{audit.actor}</span>
+                    </div>
+                    {details && (
+                      <div className="flex items-center justify-between">
+                        <span>{t(uiLocale, "leadAudit.eventDetails")}</span>
+                        <span>{details}</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
               );
             })}
           </div>
+
+          {filteredAudits.length > visibleAudits && (
+            <div className="mt-3 flex justify-center">
+              <button
+                type="button"
+                onClick={() => setVisibleAudits((prev) => prev + 6)}
+                className="rounded-lg border border-black/20 px-3 py-1 text-[12px] text-black hover:bg-black/5"
+              >
+                {t(uiLocale, "leads.auditLoadMore")}
+              </button>
+            </div>
+          )}
         </div>
       </section>
     </main>
