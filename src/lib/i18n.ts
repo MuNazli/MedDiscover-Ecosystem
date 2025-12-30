@@ -1,5 +1,4 @@
 import de from "@/messages/de.json";
-import en from "@/messages/en.json";
 import tr from "@/messages/tr.json";
 
 export type Locale = "de" | "tr";
@@ -12,7 +11,7 @@ export const localeNames: Record<Locale, string> = {
   tr: "Turkce",
 };
 
-export type Messages = typeof en;
+export type Messages = typeof de;
 
 const messages: Record<Locale, Messages> = {
   de,

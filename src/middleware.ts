@@ -1,7 +1,14 @@
-﻿import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import createMiddleware from "next-intl/middleware";
 
 const locales = ["de", "tr"] as const;
 const defaultLocale = "de";
+
+const intlMiddleware = createMiddleware({
+  locales: [...locales],
+  defaultLocale,
+  localePrefix: "always",
+});
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -28,33 +35,13 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url, 308);
   }
 
-  if (pathname === "/") {
-    const url = request.nextUrl.clone();
-    url.pathname = `/${defaultLocale}`;
-    return NextResponse.redirect(url);
-  }
-
   if (pathname === "/en" || pathname.startsWith("/en/")) {
     const url = request.nextUrl.clone();
     url.pathname = `/${defaultLocale}`;
     return NextResponse.redirect(url);
   }
 
-  const localeMatch = pathname.match(/^\/(de|tr)(?=\/|$)/);
-  const hasLocale = Boolean(localeMatch);
-
-  if (!hasLocale) {
-    const url = request.nextUrl.clone();
-    url.pathname = `/${defaultLocale}${pathname}`;
-    return NextResponse.redirect(url);
-  }
-
-  let pathWithoutLocale = pathname.replace(/^\/(de|tr)(?=\/|$)/, "");
-  if (pathWithoutLocale === "") {
-    pathWithoutLocale = "/";
-  }
-
-  return NextResponse.next();
+  return intlMiddleware(request);
 }
 
 export const config = {
