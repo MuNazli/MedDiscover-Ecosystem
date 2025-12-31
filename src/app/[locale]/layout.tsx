@@ -1,5 +1,5 @@
 import { NextIntlClientProvider } from 'next-intl';
-import { Locale, getMessages } from "@/lib/i18n";
+import { Locale, getMessages, locales } from "@/lib/i18n";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -13,7 +13,9 @@ export function generateStaticParams() {
 }
 
 export default function LocaleLayout({ children, params }: LayoutProps) {
-  const locale = (params?.locale ?? "de") as Locale;
+  const locale = locales.includes(params?.locale as Locale)
+    ? (params?.locale as Locale)
+    : "de";
 
   const messages = getMessages(locale);
 

@@ -72,6 +72,18 @@ export function middleware(request: NextRequest) {
     return response;
   }
 
+  const invalidLocaleMatch = pathname.match(/^\/([a-zA-Z-]{2,})(?=\/|$)/);
+  if (invalidLocaleMatch && !locales.includes(invalidLocaleMatch[1] as typeof locales[number]) && invalidLocaleMatch[1] !== "en") {
+    const url = request.nextUrl.clone();
+    url.pathname = `/${defaultLocale}`;
+    const response = NextResponse.redirect(url);
+    response.headers.set("x-md-mw", "hit");
+    response.headers.set("x-md-path", pathname);
+    response.headers.set("x-md-locale", invalidLocaleMatch[1]);
+    response.headers.set("x-md-redirect", `yes->${url.pathname}`);
+    return response;
+  }
+
   // TEMP DEBUG: Add headers for intl middleware handling
   const response = intlMiddleware(request);
   response.headers.set("x-md-mw", "hit");

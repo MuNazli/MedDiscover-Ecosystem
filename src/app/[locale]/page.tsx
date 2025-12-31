@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation";
 import { locales, Locale } from "@/lib/i18n";
 import { generateLocaleMetadata, LocaleHome } from "@/app/(public)/locale-home";
 
@@ -19,14 +18,9 @@ export function generateMetadata({ params }: PageProps) {
 }
 
 export default function LocaleHomePage({ params }: PageProps) {
-  const locale = params.locale as Locale;
-
-  if (!locales.includes(locale)) {
-    if (process.env.NODE_ENV === "production") {
-      console.log(`[md] notFound locale in [locale]/page: ${locale}`);
-    }
-    notFound();
-  }
+  const locale = locales.includes(params.locale as Locale)
+    ? (params.locale as Locale)
+    : "de";
 
   return <LocaleHome locale={locale} />;
 }
