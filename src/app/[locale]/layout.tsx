@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
 import { NextIntlClientProvider } from 'next-intl';
 import { locales, Locale, getMessages } from "@/lib/i18n";
 
@@ -14,10 +14,12 @@ export function generateStaticParams() {
 }
 
 export default function LocaleLayout({ children, params }: LayoutProps) {
-  const locale = params.locale as Locale;
+  // Safe default: use 'de' if locale is undefined or invalid
+  const locale = (params?.locale ?? 'de') as Locale;
   
+  // Redirect invalid locales to /de instead of showing 404
   if (!locales.includes(locale)) {
-    notFound();
+    redirect('/de');
   }
 
   const messages = getMessages(locale);
