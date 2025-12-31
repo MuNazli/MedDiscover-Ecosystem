@@ -7,6 +7,12 @@ interface LayoutProps {
   params: { locale: string };
 }
 
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return [{ locale: "de" }, { locale: "tr" }];
+}
+
 export default function LocaleLayout({ children, params }: LayoutProps) {
   const locale = params.locale as Locale;
   
