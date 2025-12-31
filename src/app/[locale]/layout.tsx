@@ -1,6 +1,5 @@
-import { redirect } from "next/navigation";
 import { NextIntlClientProvider } from 'next-intl';
-import { locales, Locale, getMessages } from "@/lib/i18n";
+import { Locale, getMessages } from "@/lib/i18n";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -14,13 +13,7 @@ export function generateStaticParams() {
 }
 
 export default function LocaleLayout({ children, params }: LayoutProps) {
-  // Safe default: use 'de' if locale is undefined or invalid
-  const locale = (params?.locale ?? 'de') as Locale;
-  
-  // Redirect invalid locales to /de instead of showing 404
-  if (!locales.includes(locale)) {
-    redirect('/de');
-  }
+  const locale = (params?.locale ?? "de") as Locale;
 
   const messages = getMessages(locale);
 
