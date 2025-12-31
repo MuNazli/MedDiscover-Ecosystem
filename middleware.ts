@@ -13,6 +13,10 @@ const intlMiddleware = createMiddleware({
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // TEMP DEBUG: Extract locale if present
+  const localeMatch = pathname.match(/^\/(de|tr|en)/);
+  const detectedLocale = localeMatch ? localeMatch[1] : "none";
+
   if (pathname.startsWith("/cms") || pathname.startsWith("/admin")) {
     if (pathname.startsWith("/cms/login")) {
       return NextResponse.next();
@@ -32,22 +36,49 @@ export function middleware(request: NextRequest) {
   if (localeCmsMatch) {
     const url = request.nextUrl.clone();
     url.pathname = pathname.replace(/^\/(de|tr)\//, "/");
-    return NextResponse.redirect(url, 308);
+    
+    // TEMP DEBUG: Add headers for redirects
+    const response = NextResponse.redirect(url, 308);
+    response.headers.set("x-md-mw", "hit");
+    response.headers.set("x-md-path", pathname);
+    response.headers.set("x-md-locale", detectedLocale);
+    response.headers.set("x-md-redirect", `yes->${url.pathname}`);
+    return response;
   }
 
   if (pathname === "/") {
     const url = request.nextUrl.clone();
     url.pathname = `/${defaultLocale}`;
-    return NextResponse.redirect(url);
+    
+    // TEMP DEBUG: Add headers for root redirect
+    const response = NextResponse.redirect(url);
+    response.headers.set("x-md-mw", "hit");
+    response.headers.set("x-md-path", pathname);
+    response.headers.set("x-md-locale", defaultLocale);
+    response.headers.set("x-md-redirect", `yes->${url.pathname}`);
+    return response;
   }
 
   if (pathname === "/en" || pathname.startsWith("/en/")) {
     const url = request.nextUrl.clone();
     url.pathname = `/${defaultLocale}`;
-    return NextResponse.redirect(url);
+    
+    // TEMP DEBUG: Add headers for en redirect
+    const response = NextResponse.redirect(url);
+    response.headers.set("x-md-mw", "hit");
+    response.headers.set("x-md-path", pathname);
+    response.headers.set("x-md-locale", "en");
+    response.headers.set("x-md-redirect", `yes->${url.pathname}`);
+    return response;
   }
 
-  return intlMiddleware(request);
+  // TEMP DEBUG: Add headers for intl middleware handling
+  const response = intlMiddleware(request);
+  response.headers.set("x-md-mw", "hit");
+  response.headers.set("x-md-path", pathname);
+  response.headers.set("x-md-locale", detectedLocale);
+  response.headers.set("x-md-redirect", "no");
+  return response;
 }
 
 export const config = {
