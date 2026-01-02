@@ -1,12 +1,9 @@
-import { getRequestConfig } from 'next-intl/server';
-import { locales, Locale } from './lib/i18n';
+import { getRequestConfig } from "next-intl/server";
+import { locales, Locale } from "./lib/i18n";
 
-export default getRequestConfig(async ({ locale }) => {
-  // Always return a valid locale to prevent Vercel SSG build failures
-  // Fallback to "de" if locale is missing or invalid
-  const resolvedLocale = (locale && locales.includes(locale as Locale))
-    ? (locale as Locale)
-    : "de";
+export default getRequestConfig(async ({ requestLocale }) => {
+  const candidate = requestLocale as Locale | undefined;
+  const resolvedLocale = candidate && locales.includes(candidate) ? candidate : "de";
 
   return {
     locale: resolvedLocale,
